@@ -112,6 +112,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="neutral">
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <meta property="og:title" content="7. Check the prod deployment – Multimedia Project">
@@ -327,9 +331,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="what-you-have-built" class="level2">
 <h2 class="anchored" data-anchor-id="what-you-have-built">What you have built</h2>
-<pre class="mermaid"><code>flowchart LR
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
   F["feature/*"] --&gt;|PR + review| D["develop"] --&gt;|auto| T["Test EC2"]
-  D --&gt;|release PR| M["main"] --&gt;|tag v*| P["Prod EC2"]</code></pre>
+  D --&gt;|release PR| M["main"] --&gt;|tag v*| P["Prod EC2"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <p>From now on, every change follows this path: a feature branch, a reviewed pull request into <code>develop</code>, a check on test, then a release pull request into <code>main</code> and a tag to reach prod.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -795,4 +810,5 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<!-- CourseFoundry feedback embed disabled -->
 </body></html>

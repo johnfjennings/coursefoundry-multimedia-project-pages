@@ -112,6 +112,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="neutral">
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <meta property="og:title" content="Build and deploy: overview – Multimedia Project">
@@ -276,11 +280,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this module your team takes the Gallery skeleton from your laptops to two servers on AWS: a <strong>test</strong> server that always runs the latest <code>develop</code>, and a <strong>prod</strong> server that runs the latest release tag on <code>main</code>.</p>
 <section id="the-whole-process" class="level2">
 <h2 class="anchored" data-anchor-id="the-whole-process">The whole process</h2>
-<pre class="mermaid"><code>flowchart LR
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
   L["Laptops&lt;br/&gt;dev environment"] --&gt;|push feature branch| G["GitHub&lt;br/&gt;team repo"]
   G --&gt;|pull request| CI["CI workflow&lt;br/&gt;mvnw verify"]
   G --&gt;|merge to develop| T["Test EC2&lt;br/&gt;runner + Docker"]
-  G --&gt;|tag v* on main| P["Prod EC2&lt;br/&gt;runner + Docker"]</code></pre>
+  G --&gt;|tag v* on main| P["Prod EC2&lt;br/&gt;runner + Docker"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -357,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Protect <code>develop</code> and <code>main</code></strong>: require a pull request, one approval, and the <code>build</code> status check from <code>ci.yml</code>. On a personal account, branch protection for private repos needs GitHub Pro (free for teachers through GitHub Education).</p></li>
 <li><p><strong>Merge settings.</strong> In <em>Settings → General → Pull Requests</em>, allow both <strong>squash merging</strong> (feature pull requests, step 4) and <strong>merge commits</strong> (release pull requests, step 6).</p></li>
 <li><p><strong>Runner tokens.</strong> Only the repo owner can register a self-hosted runner, so students cannot open <em>Settings → Actions → Runners</em>. When a team reaches step 2 or 3, generate a registration token (valid for one hour) and give it to the driver:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> api <span class="at">-X</span> POST repos/<span class="op">&lt;</span>owner<span class="op">&gt;</span>/<span class="op">&lt;</span>team-repo<span class="op">&gt;</span>/actions/runners/registration-token <span class="at">--jq</span> .token</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> api <span class="at">-X</span> POST repos/<span class="op">&lt;</span>owner<span class="op">&gt;</span>/<span class="op">&lt;</span>team-repo<span class="op">&gt;</span>/actions/runners/registration-token <span class="at">--jq</span> .token</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Or open <em>Settings → Actions → Runners → New self-hosted runner</em> and copy the token from the <em>Configure</em> block.</p></li>
 <li><p><strong>Actions minutes.</strong> <code>ci.yml</code> runs on GitHub’s own runners and uses your account’s included minutes for private repos. The deploy workflows run on the teams’ EC2 runners and use none.</p></li>
 <li><p><strong>Workflows.</strong> Steps 2 and 3 have students add <code>ci.yml</code>, <code>deploy-test.yml</code> and <code>deploy-prod.yml</code> through pull requests. If you add them to the skeleton beforehand, tell students to skip those parts.</p></li>
@@ -817,4 +832,5 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<!-- CourseFoundry feedback embed disabled -->
 </body></html>

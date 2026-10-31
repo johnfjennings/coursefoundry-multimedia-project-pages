@@ -80,7 +80,7 @@
     "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#the-cycle",
     "title": "4. Feature branches and pull requests",
     "section": "The cycle",
-    "text": "The cycle\nflowchart LR\n  A[\"Pull develop\"] --&gt; B[\"Branch\"] --&gt; C[\"Change + run locally\"] --&gt; D[\"Commit + push\"] --&gt; E[\"Pull request\"] --&gt; F[\"CI green +&lt;br/&gt;teammate review\"] --&gt; G[\"Merge\"] --&gt; H[\"Auto-deploy&lt;br/&gt;to test\"]",
+    "text": "The cycle\n\n\n\n\n\nflowchart LR\n  A[\"Pull develop\"] --&gt; B[\"Branch\"] --&gt; C[\"Change + run locally\"] --&gt; D[\"Commit + push\"] --&gt; E[\"Pull request\"] --&gt; F[\"CI green +&lt;br/&gt;teammate review\"] --&gt; G[\"Merge\"] --&gt; H[\"Auto-deploy&lt;br/&gt;to test\"]",
     "crumbs": [
       "Build and deploy",
       "4. Feature branches and PRs"
@@ -311,7 +311,7 @@
     "href": "modules/02-build-and-deploy/00-overview.html#the-whole-process",
     "title": "Build and deploy: overview",
     "section": "The whole process",
-    "text": "The whole process\nflowchart LR\n  L[\"Laptops&lt;br/&gt;dev environment\"] --&gt;|push feature branch| G[\"GitHub&lt;br/&gt;team repo\"]\n  G --&gt;|pull request| CI[\"CI workflow&lt;br/&gt;mvnw verify\"]\n  G --&gt;|merge to develop| T[\"Test EC2&lt;br/&gt;runner + Docker\"]\n  G --&gt;|tag v* on main| P[\"Prod EC2&lt;br/&gt;runner + Docker\"]\n\n\n\n\n\n\n\n\n\nEnvironment\nWhere\nRuns\nUpdated when\n\n\n\n\ndev\nYour laptop\nWhatever branch you have checked out\nYou run it\n\n\ntest\nEC2 instance with the label test\nThe latest commit on develop\nA PR is merged into develop\n\n\nprod\nEC2 instance with the label prod\nThe latest release tag, e.g. v0.1.0\nA tag is pushed on main\n\n\n\nEach EC2 instance runs a GitHub self-hosted runner. The runner connects out to GitHub and asks for jobs; GitHub never connects in. That is why the servers only need port 80 open to the world, and why it does not matter that their public IP changes between lab sessions.",
+    "text": "The whole process\n\n\n\n\n\nflowchart LR\n  L[\"Laptops&lt;br/&gt;dev environment\"] --&gt;|push feature branch| G[\"GitHub&lt;br/&gt;team repo\"]\n  G --&gt;|pull request| CI[\"CI workflow&lt;br/&gt;mvnw verify\"]\n  G --&gt;|merge to develop| T[\"Test EC2&lt;br/&gt;runner + Docker\"]\n  G --&gt;|tag v* on main| P[\"Prod EC2&lt;br/&gt;runner + Docker\"]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnvironment\nWhere\nRuns\nUpdated when\n\n\n\n\ndev\nYour laptop\nWhatever branch you have checked out\nYou run it\n\n\ntest\nEC2 instance with the label test\nThe latest commit on develop\nA PR is merged into develop\n\n\nprod\nEC2 instance with the label prod\nThe latest release tag, e.g. v0.1.0\nA tag is pushed on main\n\n\n\nEach EC2 instance runs a GitHub self-hosted runner. The runner connects out to GitHub and asks for jobs; GitHub never connects in. That is why the servers only need port 80 open to the world, and why it does not matter that their public IP changes between lab sessions.",
     "crumbs": [
       "Build and deploy",
       "Overview"
@@ -637,7 +637,7 @@
     "href": "modules/02-build-and-deploy/07-check-prod.html#what-you-have-built",
     "title": "7. Check the prod deployment",
     "section": "What you have built",
-    "text": "What you have built\nflowchart LR\n  F[\"feature/*\"] --&gt;|PR + review| D[\"develop\"] --&gt;|auto| T[\"Test EC2\"]\n  D --&gt;|release PR| M[\"main\"] --&gt;|tag v*| P[\"Prod EC2\"]\nFrom now on, every change follows this path: a feature branch, a reviewed pull request into develop, a check on test, then a release pull request into main and a tag to reach prod.\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nhttp://&lt;prod-ip&gt;/ serves release v0.1.0, the team knows both server addresses, and everyone can explain how a change reaches prod.",
+    "text": "What you have built\n\n\n\n\n\nflowchart LR\n  F[\"feature/*\"] --&gt;|PR + review| D[\"develop\"] --&gt;|auto| T[\"Test EC2\"]\n  D --&gt;|release PR| M[\"main\"] --&gt;|tag v*| P[\"Prod EC2\"]\n\n\n\n\n\n\nFrom now on, every change follows this path: a feature branch, a reviewed pull request into develop, a check on test, then a release pull request into main and a tag to reach prod.\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nhttp://&lt;prod-ip&gt;/ serves release v0.1.0, the team knows both server addresses, and everyone can explain how a change reaches prod.",
     "crumbs": [
       "Build and deploy",
       "7. Check prod"
