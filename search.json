@@ -1,5 +1,310 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Multimedia Project",
+    "section": "",
+    "text": "Course Cover",
+    "crumbs": [
+      "Multimedia Project"
+    ]
+  },
+  {
+    "objectID": "index.html#course-structure",
+    "href": "index.html#course-structure",
+    "title": "Multimedia Project",
+    "section": "Course Structure",
+    "text": "Course Structure\n\n\n\nModule\nWhat you do\n\n\n\n\nIntroduction\nFind out what the course covers and how it works\n\n\nBuild and deploy\nTake the Gallery from your laptops to test and prod servers on AWS in seven steps",
+    "crumbs": [
+      "Multimedia Project"
+    ]
+  },
+  {
+    "objectID": "index.html#where-to-start",
+    "href": "index.html#where-to-start",
+    "title": "Multimedia Project",
+    "section": "Where to Start",
+    "text": "Where to Start\nRead the Welcome page, then move on to the Build and deploy overview. The overview shows the whole process in one diagram and lists the seven steps you will follow.",
+    "crumbs": [
+      "Multimedia Project"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html",
+    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html",
+    "title": "4. Feature branches and pull requests",
+    "section": "",
+    "text": "Who: every team member, one at a time. Goal: each of you adds your card to the team page through your own branch and pull request, reviewed and merged by a teammate.\nThe first change everyone makes edits the same place in the same file (team.html), so take turns: the next person starts only after the previous pull request is merged. Later, when you work on different files, you can work in parallel.",
+    "crumbs": [
+      "Build And Deploy",
+      "4. Feature branches and pull requests"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#the-cycle",
+    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#the-cycle",
+    "title": "4. Feature branches and pull requests",
+    "section": "The cycle",
+    "text": "The cycle\n\n\n\n\n\nflowchart LR\n  A[\"Pull develop\"] --&gt; B[\"Branch\"] --&gt; C[\"Change + run locally\"] --&gt; D[\"Commit + push\"] --&gt; E[\"Pull request\"] --&gt; F[\"CI green +&lt;br/&gt;teammate review\"] --&gt; G[\"Merge\"] --&gt; H[\"Auto-deploy&lt;br/&gt;to test\"]",
+    "crumbs": [
+      "Build And Deploy",
+      "4. Feature branches and pull requests"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#create-an-issue",
+    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#create-an-issue",
+    "title": "4. Feature branches and pull requests",
+    "section": "4.1 Create an issue",
+    "text": "4.1 Create an issue\nOn your team’s project board, create an issue such as Add Aoife to the team page and assign it to yourself. Note its number, e.g. #7.",
+    "crumbs": [
+      "Build And Deploy",
+      "4. Feature branches and pull requests"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#start-from-the-latest-develop",
+    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#start-from-the-latest-develop",
+    "title": "4. Feature branches and pull requests",
+    "section": "4.2 Start from the latest develop",
+    "text": "4.2 Start from the latest develop\ngit switch develop\ngit pull\ngit switch -c feature/7-add-aoife-to-team-page\nBranch names follow feature/&lt;issue-number&gt;-&lt;short-description&gt;. In IntelliJ: Git → Pull, then click the branch name bottom right → New Branch.",
+    "crumbs": [
+      "Build And Deploy",
+      "4. Feature branches and pull requests"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#make-the-change",
+    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#make-the-change",
+    "title": "4. Feature branches and pull requests",
+    "section": "4.3 Make the change",
+    "text": "4.3 Make the change\nOpen src/main/resources/templates/team.html. Between the TEAM MEMBERS comments, add your card below any that are already there:\n&lt;div class=\"team-member\"&gt;\n    &lt;h2&gt;Aoife Byrne&lt;/h2&gt;\n    &lt;p&gt;Employer vertical&lt;/p&gt;\n&lt;/div&gt;\nCheck every &lt;div&gt; you open has its closing &lt;/div&gt;.\nRun the app (step 1.5) and check your card appears at http://localhost:8080/team. Then run the build CI will run:\n./mvnw verify",
+    "crumbs": [
+      "Build And Deploy",
+      "4. Feature branches and pull requests"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#commit-and-push",
+    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#commit-and-push",
+    "title": "4. Feature branches and pull requests",
+    "section": "4.4 Commit and push",
+    "text": "4.4 Commit and push\ngit status\ngit add src/main/resources/templates/team.html\ngit commit -m \"Add Aoife to team page (#7)\"\ngit push -u origin feature/7-add-aoife-to-team-page\ngit status should list only the files you meant to change. Never commit .idea/, target/ or anything with a password in it.",
+    "crumbs": [
+      "Build And Deploy",
+      "4. Feature branches and pull requests"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#open-the-pull-request",
+    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#open-the-pull-request",
+    "title": "4. Feature branches and pull requests",
+    "section": "4.5 Open the pull request",
+    "text": "4.5 Open the pull request\nOn GitHub, click Compare & pull request on the yellow banner, or Pull requests → New pull request.\n\nbase: develop ← compare: your branch. Never main.\nTitle: what the change does, e.g. Add Aoife to team page.\nDescription: Closes #7, how to check it (open /team), and a screenshot.\nReviewers: one teammate.\n\nThe ci check starts straight away. Wait for the green tick. If it goes red, click Details, read the log, fix it on the same branch and push again: the pull request updates itself.",
+    "crumbs": [
+      "Build And Deploy",
+      "4. Feature branches and pull requests"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#review-a-teammates-pull-request",
+    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#review-a-teammates-pull-request",
+    "title": "4. Feature branches and pull requests",
+    "section": "4.6 Review a teammate’s pull request",
+    "text": "4.6 Review a teammate’s pull request\nReviewing means running the change, not just reading it:\ngit fetch origin\ngit switch feature/7-add-aoife-to-team-page\n./mvnw spring-boot:run\nCheck the card at localhost:8080/team, then on GitHub open Files changed:\n\nDoes it do what the issue says, and nothing else?\nIs the HTML valid: closing tags, indentation matching the file?\nAre any unexpected files changed or deleted?\n\nIf it is fine, choose Review changes → Approve. Otherwise choose Request changes with a comment saying exactly what to fix. Afterwards, switch back with git switch develop.",
+    "crumbs": [
+      "Build And Deploy",
+      "4. Feature branches and pull requests"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#merge",
+    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#merge",
+    "title": "4. Feature branches and pull requests",
+    "section": "4.7 Merge",
+    "text": "4.7 Merge\nWhen ci is green and the review is approved, the author clicks Squash and merge, then Delete branch. Squashing keeps develop’s history to one commit per feature.\nThe merge into develop starts deploy-test on the test server. Step 5 checks it.",
+    "crumbs": [
+      "Build And Deploy",
+      "4. Feature branches and pull requests"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#hand-over-to-the-next-person",
+    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#hand-over-to-the-next-person",
+    "title": "4. Feature branches and pull requests",
+    "section": "4.8 Hand over to the next person",
+    "text": "4.8 Hand over to the next person\nTell the next teammate the pull request is merged. They start again at 4.2; git pull brings your change into their develop.\n\n\n\n\n\n\nNoteIf you get a merge conflict\n\n\n\n\n\nIf two people edited the same lines, GitHub reports This branch has conflicts. On your branch:\ngit switch develop\ngit pull\ngit switch feature/7-add-aoife-to-team-page\ngit merge develop\nOpen the file, keep both cards, delete the &lt;&lt;&lt;&lt;&lt;&lt;&lt;, ======= and &gt;&gt;&gt;&gt;&gt;&gt;&gt; lines, then commit and push. The pull request updates and CI runs again.\n\n\n\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nEvery member has one merged pull request, approved by a teammate, and the team page on develop shows every card.",
+    "crumbs": [
+      "Build And Deploy",
+      "4. Feature branches and pull requests"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/07-check-prod.html",
+    "href": "modules/02-build-and-deploy/07-check-prod.html",
+    "title": "7. Check the prod deployment",
+    "section": "",
+    "text": "Who: the whole team. Goal: confirm the release is running on prod, and know how to roll back if it is not.",
+    "crumbs": [
+      "Build And Deploy",
+      "7. Check the prod deployment"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/07-check-prod.html#follow-the-deployment",
+    "href": "modules/02-build-and-deploy/07-check-prod.html#follow-the-deployment",
+    "title": "7. Check the prod deployment",
+    "section": "7.1 Follow the deployment",
+    "text": "7.1 Follow the deployment\nOpen Actions → deploy-prod. The newest run is named after your tag, e.g. v0.1.0. Check that:\n\nCheck the tag is on main passed\nWait for the app to answer ends with Release v0.1.0 is up\n\nIf the run stays Queued with Waiting for a runner, start the lab in the account that holds gallery-prod, and start the instance if it is stopped.",
+    "crumbs": [
+      "Build And Deploy",
+      "7. Check the prod deployment"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/07-check-prod.html#check-it-in-the-browser",
+    "href": "modules/02-build-and-deploy/07-check-prod.html#check-it-in-the-browser",
+    "title": "7. Check the prod deployment",
+    "section": "7.2 Check it in the browser",
+    "text": "7.2 Check it in the browser\nOpen http://&lt;prod-ip&gt;/ and run the same checklist as on test (step 5.2):\n\nThe footer shows the release, e.g. Release v0.1.0\nThe home page loads\n/team shows every team member’s card\nLogin and logout work\n\nProd and test should now show the same pages, because they run the same code. Only the footer differs: test names the last merged pull request, prod names the release. Prod also uses the prod Spring profile, and test uses test.",
+    "crumbs": [
+      "Build And Deploy",
+      "7. Check the prod deployment"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/07-check-prod.html#confirm-which-release-is-running",
+    "href": "modules/02-build-and-deploy/07-check-prod.html#confirm-which-release-is-running",
+    "title": "7. Check the prod deployment",
+    "section": "7.3 Confirm which release is running",
+    "text": "7.3 Confirm which release is running\nThe footer is the quickest check. To confirm on the server itself:\ndocker ps --format '{{.Image}}  {{.Status}}'\nIt prints gallery:v0.1.0  Up … minutes. Record the release, its date and the prod URL on your team’s board: this is your deployment record.",
+    "crumbs": [
+      "Build And Deploy",
+      "7. Check the prod deployment"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/07-check-prod.html#roll-back-a-bad-release",
+    "href": "modules/02-build-and-deploy/07-check-prod.html#roll-back-a-bad-release",
+    "title": "7. Check the prod deployment",
+    "section": "7.4 Roll back a bad release",
+    "text": "7.4 Roll back a bad release\nIf a release breaks prod, put the previous one back first and fix the problem afterwards.\nFrom GitHub: open Actions → deploy-prod, click the run for the previous tag (e.g. v0.1.0) and choose Re-run all jobs. It builds and deploys that tag again, and the footer changes back to that release.\nOn the server, faster: the previous image is still there, so start it directly:\ndocker images gallery\ndocker rm -f gallery\ndocker run -d --name gallery --restart unless-stopped \\\n  -p 80:8080 -e SPRING_PROFILES_ACTIVE=prod \\\n  -e APP_BUILD_INFO=\"Release v0.1.0\" gallery:v0.1.0\nThen fix the problem on a feature branch, check it on test, and release a new version, e.g. v0.2.1 (steps 4 to 6).\n\n\n\n\n\n\nWarningBefore the assessed release\n\n\n\nThe skeleton’s student1 and other in-memory accounts are a week 1 convenience. Before v1.0.0 in week 11, login must use real accounts stored in the database, and the seed accounts must be gone from prod.",
+    "crumbs": [
+      "Build And Deploy",
+      "7. Check the prod deployment"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/07-check-prod.html#what-you-have-built",
+    "href": "modules/02-build-and-deploy/07-check-prod.html#what-you-have-built",
+    "title": "7. Check the prod deployment",
+    "section": "What you have built",
+    "text": "What you have built\n\n\n\n\n\nflowchart LR\n  F[\"feature/*\"] --&gt;|PR + review| D[\"develop\"] --&gt;|auto| T[\"Test EC2\"]\n  D --&gt;|release PR| M[\"main\"] --&gt;|tag v*| P[\"Prod EC2\"]\n\n\n\n\n\n\nFrom now on, every change follows this path: a feature branch, a reviewed pull request into develop, a check on test, then a release pull request into main and a tag to reach prod.\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nhttp://&lt;prod-ip&gt;/ serves release v0.1.0, with the release in its footer, the team knows both server addresses, and everyone can explain how a change reaches prod.",
+    "crumbs": [
+      "Build And Deploy",
+      "7. Check the prod deployment"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/00-overview.html",
+    "href": "modules/02-build-and-deploy/00-overview.html",
+    "title": "Build and deploy: overview",
+    "section": "",
+    "text": "In this module your team takes the Gallery skeleton from your laptops to two servers on AWS: a test server that always runs the latest develop, and a prod server that runs the latest release tag on main.",
+    "crumbs": [
+      "Build And Deploy",
+      "Build and deploy: overview"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/00-overview.html#the-whole-process",
+    "href": "modules/02-build-and-deploy/00-overview.html#the-whole-process",
+    "title": "Build and deploy: overview",
+    "section": "The whole process",
+    "text": "The whole process\n\n\n\n\n\nflowchart LR\n  L[\"Laptops&lt;br/&gt;dev environment\"] --&gt;|push feature branch| G[\"GitHub&lt;br/&gt;team repo\"]\n  G --&gt;|pull request| CI[\"CI workflow&lt;br/&gt;mvnw verify\"]\n  G --&gt;|merge to develop| T[\"Test EC2&lt;br/&gt;runner + Docker\"]\n  G --&gt;|tag v* on main| P[\"Prod EC2&lt;br/&gt;runner + Docker\"]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnvironment\nWhere\nRuns\nUpdated when\nFooter shows\n\n\n\n\ndev\nYour laptop\nWhatever branch you have checked out\nYou run it\nlocal dev\n\n\ntest\nEC2 instance with the label test\nThe latest commit on develop\nA PR is merged into develop\nPR #9: Add team cards\n\n\nprod\nEC2 instance with the label prod\nThe latest release tag, e.g. v0.1.0\nA tag is pushed on main\nRelease v0.1.0\n\n\n\nEach EC2 instance runs a GitHub self-hosted runner. The runner connects out to GitHub and asks for jobs; GitHub never connects in. That is why the servers only need port 80 open to the world, and why it does not matter that their public IP changes between lab sessions.",
+    "crumbs": [
+      "Build And Deploy",
+      "Build and deploy: overview"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/00-overview.html#the-steps",
+    "href": "modules/02-build-and-deploy/00-overview.html#the-steps",
+    "title": "Build and deploy: overview",
+    "section": "The steps",
+    "text": "The steps\n\nClone the team repo and run it locally\nCreate the test server on AWS\nCreate the prod server on AWS\nFeature branches and pull requests\nCheck the change on the test server\nRelease: pull request to main and tag\nCheck the prod deployment\n\nSteps 1 and 4 are done by every team member. Steps 2 and 3 are done once per team: one person drives while the others watch, and you swap drivers between steps 2 and 3.",
+    "crumbs": [
+      "Build And Deploy",
+      "Build and deploy: overview"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/00-overview.html#what-you-need",
+    "href": "modules/02-build-and-deploy/00-overview.html#what-you-need",
+    "title": "Build and deploy: overview",
+    "section": "What you need",
+    "text": "What you need\n\nA GitHub account, with the invitation to your team repo accepted\nJDK 17, Docker Desktop and Git on your laptop\nAccess to the AWS Academy course your lecturer has enrolled you in\nAn SSH client: the ssh command in PowerShell, Terminal or Git Bash\n\n\n\n\n\n\n\nNoteFor the lecturer: before class\n\n\n\n\n\n\nCreate one private repo per team from the Gallery skeleton on your GitHub account, and add each student as a collaborator with Write access.\nProtect develop and main: require a pull request, one approval, and the build status check from ci.yml. On a personal account, branch protection for private repos needs GitHub Pro (free for teachers through GitHub Education).\nMerge settings. In Settings → General → Pull Requests, allow both squash merging (feature pull requests, step 4) and merge commits (release pull requests, step 6).\nRunner tokens. Only the repo owner can register a self-hosted runner, so students cannot open Settings → Actions → Runners. When a team reaches step 2 or 3, generate a registration token (valid for one hour) and give it to the driver:\ngh api -X POST repos/&lt;owner&gt;/&lt;team-repo&gt;/actions/runners/registration-token --jq .token\nOr open Settings → Actions → Runners → New self-hosted runner and copy the token from the Configure block.\nActions minutes. ci.yml runs on GitHub’s own runners and uses your account’s included minutes for private repos. The deploy workflows run on the teams’ EC2 runners and use none.\nWorkflows. Steps 2 and 3 have students add ci.yml, deploy-test.yml and deploy-prod.yml through pull requests. If you add them to the skeleton beforehand, tell students to skip those parts.\nCheck the skeleton builds on Linux. mvnw should be committed as executable (git update-index --chmod=+x mvnw), and .mvn/wrapper/maven-wrapper.properties must be present. The workflows run chmod +x mvnw as a safety net, but cannot replace a missing wrapper file.\nFooter build label. The footer needs four things in the skeleton: app.build-info: ${APP_BUILD_INFO:local dev} in application.yml, web/BuildInfoAdvice.java, templates/fragments/footer.html, and the fragment included on each page. Group00’s pull request #9 adds all four and can be copied into the skeleton. Without them the app still runs, but the footer label does not appear.",
+    "crumbs": [
+      "Build And Deploy",
+      "Build and deploy: overview"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/06-release-pr-and-tag.html",
+    "href": "modules/02-build-and-deploy/06-release-pr-and-tag.html",
+    "title": "6. Release: pull request to main and tag",
+    "section": "",
+    "text": "Who: the whole team decides; one person opens the release pull request and another reviews it. Goal: move what is on develop (and checked on test) onto main, and mark it with a version tag that starts the prod deployment.\nRelease only what you have checked on the test server (step 5). Nothing should reach prod that has not run on test first.",
+    "crumbs": [
+      "Build And Deploy",
+      "6. Release: pull request to main and tag"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/06-release-pr-and-tag.html#choose-a-version-number",
+    "href": "modules/02-build-and-deploy/06-release-pr-and-tag.html#choose-a-version-number",
+    "title": "6. Release: pull request to main and tag",
+    "section": "6.1 Choose a version number",
+    "text": "6.1 Choose a version number\nTags use the format vMAJOR.MINOR.PATCH:\n\n\n\nRelease\nExample\n\n\n\n\nYour first practice release\nv0.1.0\n\n\nNew features since the last release\nv0.2.0\n\n\nOnly fixes since the last release\nv0.2.1\n\n\nThe assessed release in week 11\nv1.0.0\n\n\n\nA tag can be used only once. If a release goes wrong, fix it and release the next number; never move or reuse a tag.",
+    "crumbs": [
+      "Build And Deploy",
+      "6. Release: pull request to main and tag"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/06-release-pr-and-tag.html#open-the-release-pull-request",
+    "href": "modules/02-build-and-deploy/06-release-pr-and-tag.html#open-the-release-pull-request",
+    "title": "6. Release: pull request to main and tag",
+    "section": "6.2 Open the release pull request",
+    "text": "6.2 Open the release pull request\nOn GitHub: Pull requests → New pull request.\n\nbase: main ← compare: develop\nTitle: Release v0.1.0\nDescription: the list of changes since the last release. Link each merged pull request, e.g. #3, #4, #5.\nReviewer: a teammate who did not open it.\n\nThe ci check runs again, this time against main.",
+    "crumbs": [
+      "Build And Deploy",
+      "6. Release: pull request to main and tag"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/06-release-pr-and-tag.html#review-and-merge",
+    "href": "modules/02-build-and-deploy/06-release-pr-and-tag.html#review-and-merge",
+    "title": "6. Release: pull request to main and tag",
+    "section": "6.3 Review and merge",
+    "text": "6.3 Review and merge\nThe reviewer checks that:\n\nci is green\nThe test server is running the same commit as the head of develop: compare the latest deploy-test run’s commit with the top commit in the pull request’s Commits tab\nEvery change in Files changed belongs in this release\n\nThen merge with Create a merge commit, not Squash and merge. A merge commit keeps main and develop sharing the same history, so your next release pull request shows only the new changes. Do not delete develop afterwards.",
+    "crumbs": [
+      "Build And Deploy",
+      "6. Release: pull request to main and tag"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/06-release-pr-and-tag.html#create-the-tag",
+    "href": "modules/02-build-and-deploy/06-release-pr-and-tag.html#create-the-tag",
+    "title": "6. Release: pull request to main and tag",
+    "section": "6.4 Create the tag",
+    "text": "6.4 Create the tag\nTag the merge commit on main by publishing a GitHub release:\n\nOn the repo’s main page, click Releases → Draft a new release.\nChoose a tag: type v0.1.0 and click Create new tag: v0.1.0 on publish.\nTarget: main.\nRelease title: v0.1.0. Click Generate release notes to list the merged pull requests.\nClick Publish release.\n\n\n\n\n\n\n\nNoteOr from the command line\n\n\n\n\n\ngit switch main\ngit pull\ngit tag -a v0.1.0 -m \"Release v0.1.0\"\ngit push origin v0.1.0\nThen create the release notes from the tag on GitHub, under Releases → Draft a new release → Choose a tag → v0.1.0.\n\n\n\nPublishing the release pushes the tag, which starts deploy-prod on the prod server. Step 7 checks it.\n\n\n\n\n\n\nWarning\n\n\n\nOnly tag main. If you tag a commit on develop or a feature branch, deploy-prod stops at Check the tag is on main and prod keeps running the previous release. Delete the wrong release and tag, then tag main.\n\n\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nmain contains the release merge commit, and the release v0.1.0 appears under Releases.",
+    "crumbs": [
+      "Build And Deploy",
+      "6. Release: pull request to main and tag"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
@@ -10,472 +315,69 @@
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/06-release-pr-and-tag.html",
-    "href": "modules/02-build-and-deploy/06-release-pr-and-tag.html",
-    "title": "6. Release: pull request to main and tag",
-    "section": "",
-    "text": "Who: the whole team decides; one person opens the release pull request and another reviews it. Goal: move what is on develop (and checked on test) onto main, and mark it with a version tag that starts the prod deployment.\nRelease only what you have checked on the test server (step 5). Nothing should reach prod that has not run on test first.",
-    "crumbs": [
-      "Build and deploy",
-      "6. Release PR and tag"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/06-release-pr-and-tag.html#choose-a-version-number",
-    "href": "modules/02-build-and-deploy/06-release-pr-and-tag.html#choose-a-version-number",
-    "title": "6. Release: pull request to main and tag",
-    "section": "6.1 Choose a version number",
-    "text": "6.1 Choose a version number\nTags use the format vMAJOR.MINOR.PATCH:\n\n\n\nRelease\nExample\n\n\n\n\nYour first practice release\nv0.1.0\n\n\nNew features since the last release\nv0.2.0\n\n\nOnly fixes since the last release\nv0.2.1\n\n\nThe assessed release in week 11\nv1.0.0\n\n\n\nA tag can be used only once. If a release goes wrong, fix it and release the next number; never move or reuse a tag.",
-    "crumbs": [
-      "Build and deploy",
-      "6. Release PR and tag"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/06-release-pr-and-tag.html#open-the-release-pull-request",
-    "href": "modules/02-build-and-deploy/06-release-pr-and-tag.html#open-the-release-pull-request",
-    "title": "6. Release: pull request to main and tag",
-    "section": "6.2 Open the release pull request",
-    "text": "6.2 Open the release pull request\nOn GitHub: Pull requests → New pull request.\n\nbase: main ← compare: develop\nTitle: Release v0.1.0\nDescription: the list of changes since the last release. Link each merged pull request, e.g. #3, #4, #5.\nReviewer: a teammate who did not open it.\n\nThe ci check runs again, this time against main.",
-    "crumbs": [
-      "Build and deploy",
-      "6. Release PR and tag"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/06-release-pr-and-tag.html#review-and-merge",
-    "href": "modules/02-build-and-deploy/06-release-pr-and-tag.html#review-and-merge",
-    "title": "6. Release: pull request to main and tag",
-    "section": "6.3 Review and merge",
-    "text": "6.3 Review and merge\nThe reviewer checks that:\n\nci is green\nThe test server is running the same commit as the head of develop: compare the latest deploy-test run’s commit with the top commit in the pull request’s Commits tab\nEvery change in Files changed belongs in this release\n\nThen merge with Create a merge commit, not Squash and merge. A merge commit keeps main and develop sharing the same history, so your next release pull request shows only the new changes. Do not delete develop afterwards.",
-    "crumbs": [
-      "Build and deploy",
-      "6. Release PR and tag"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/06-release-pr-and-tag.html#create-the-tag",
-    "href": "modules/02-build-and-deploy/06-release-pr-and-tag.html#create-the-tag",
-    "title": "6. Release: pull request to main and tag",
-    "section": "6.4 Create the tag",
-    "text": "6.4 Create the tag\nTag the merge commit on main by publishing a GitHub release:\n\nOn the repo’s main page, click Releases → Draft a new release.\nChoose a tag: type v0.1.0 and click Create new tag: v0.1.0 on publish.\nTarget: main.\nRelease title: v0.1.0. Click Generate release notes to list the merged pull requests.\nClick Publish release.\n\n\n\n\n\n\n\nNoteOr from the command line\n\n\n\n\n\ngit switch main\ngit pull\ngit tag -a v0.1.0 -m \"Release v0.1.0\"\ngit push origin v0.1.0\nThen create the release notes from the tag on GitHub, under Releases → Draft a new release → Choose a tag → v0.1.0.\n\n\n\nPublishing the release pushes the tag, which starts deploy-prod on the prod server. Step 7 checks it.\n\n\n\n\n\n\nWarning\n\n\n\nOnly tag main. If you tag a commit on develop or a feature branch, deploy-prod stops at Check the tag is on main and prod keeps running the previous release. Delete the wrong release and tag, then tag main.\n\n\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nmain contains the release merge commit, and the release v0.1.0 appears under Releases.",
-    "crumbs": [
-      "Build and deploy",
-      "6. Release PR and tag"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html",
-    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html",
-    "title": "4. Feature branches and pull requests",
-    "section": "",
-    "text": "Who: every team member, one at a time. Goal: each of you adds your card to the team page through your own branch and pull request, reviewed and merged by a teammate.\nThe first change everyone makes edits the same place in the same file (team.html), so take turns: the next person starts only after the previous pull request is merged. Later, when you work on different files, you can work in parallel.",
-    "crumbs": [
-      "Build and deploy",
-      "4. Feature branches and PRs"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#the-cycle",
-    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#the-cycle",
-    "title": "4. Feature branches and pull requests",
-    "section": "The cycle",
-    "text": "The cycle\n\n\n\n\n\nflowchart LR\n  A[\"Pull develop\"] --&gt; B[\"Branch\"] --&gt; C[\"Change + run locally\"] --&gt; D[\"Commit + push\"] --&gt; E[\"Pull request\"] --&gt; F[\"CI green +&lt;br/&gt;teammate review\"] --&gt; G[\"Merge\"] --&gt; H[\"Auto-deploy&lt;br/&gt;to test\"]",
-    "crumbs": [
-      "Build and deploy",
-      "4. Feature branches and PRs"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#create-an-issue",
-    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#create-an-issue",
-    "title": "4. Feature branches and pull requests",
-    "section": "4.1 Create an issue",
-    "text": "4.1 Create an issue\nOn your team’s project board, create an issue such as Add Aoife to the team page and assign it to yourself. Note its number, e.g. #7.",
-    "crumbs": [
-      "Build and deploy",
-      "4. Feature branches and PRs"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#start-from-the-latest-develop",
-    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#start-from-the-latest-develop",
-    "title": "4. Feature branches and pull requests",
-    "section": "4.2 Start from the latest develop",
-    "text": "4.2 Start from the latest develop\ngit switch develop\ngit pull\ngit switch -c feature/7-add-aoife-to-team-page\nBranch names follow feature/&lt;issue-number&gt;-&lt;short-description&gt;. In IntelliJ: Git → Pull, then click the branch name bottom right → New Branch.",
-    "crumbs": [
-      "Build and deploy",
-      "4. Feature branches and PRs"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#make-the-change",
-    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#make-the-change",
-    "title": "4. Feature branches and pull requests",
-    "section": "4.3 Make the change",
-    "text": "4.3 Make the change\nOpen src/main/resources/templates/team.html. Between the TEAM MEMBERS comments, add your card below any that are already there:\n&lt;div class=\"team-member\"&gt;\n    &lt;h2&gt;Aoife Byrne&lt;/h2&gt;\n    &lt;p&gt;Employer vertical&lt;/p&gt;\n&lt;/div&gt;\nCheck every &lt;div&gt; you open has its closing &lt;/div&gt;.\nRun the app (step 1.5) and check your card appears at http://localhost:8080/team. Then run the build CI will run:\n./mvnw verify",
-    "crumbs": [
-      "Build and deploy",
-      "4. Feature branches and PRs"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#commit-and-push",
-    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#commit-and-push",
-    "title": "4. Feature branches and pull requests",
-    "section": "4.4 Commit and push",
-    "text": "4.4 Commit and push\ngit status\ngit add src/main/resources/templates/team.html\ngit commit -m \"Add Aoife to team page (#7)\"\ngit push -u origin feature/7-add-aoife-to-team-page\ngit status should list only the files you meant to change. Never commit .idea/, target/ or anything with a password in it.",
-    "crumbs": [
-      "Build and deploy",
-      "4. Feature branches and PRs"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#open-the-pull-request",
-    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#open-the-pull-request",
-    "title": "4. Feature branches and pull requests",
-    "section": "4.5 Open the pull request",
-    "text": "4.5 Open the pull request\nOn GitHub, click Compare & pull request on the yellow banner, or Pull requests → New pull request.\n\nbase: develop ← compare: your branch. Never main.\nTitle: what the change does, e.g. Add Aoife to team page.\nDescription: Closes #7, how to check it (open /team), and a screenshot.\nReviewers: one teammate.\n\nThe ci check starts straight away. Wait for the green tick. If it goes red, click Details, read the log, fix it on the same branch and push again: the pull request updates itself.",
-    "crumbs": [
-      "Build and deploy",
-      "4. Feature branches and PRs"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#review-a-teammates-pull-request",
-    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#review-a-teammates-pull-request",
-    "title": "4. Feature branches and pull requests",
-    "section": "4.6 Review a teammate’s pull request",
-    "text": "4.6 Review a teammate’s pull request\nReviewing means running the change, not just reading it:\ngit fetch origin\ngit switch feature/7-add-aoife-to-team-page\n./mvnw spring-boot:run\nCheck the card at localhost:8080/team, then on GitHub open Files changed:\n\nDoes it do what the issue says, and nothing else?\nIs the HTML valid: closing tags, indentation matching the file?\nAre any unexpected files changed or deleted?\n\nIf it is fine, choose Review changes → Approve. Otherwise choose Request changes with a comment saying exactly what to fix. Afterwards, switch back with git switch develop.",
-    "crumbs": [
-      "Build and deploy",
-      "4. Feature branches and PRs"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#merge",
-    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#merge",
-    "title": "4. Feature branches and pull requests",
-    "section": "4.7 Merge",
-    "text": "4.7 Merge\nWhen ci is green and the review is approved, the author clicks Squash and merge, then Delete branch. Squashing keeps develop’s history to one commit per feature.\nThe merge into develop starts deploy-test on the test server. Step 5 checks it.",
-    "crumbs": [
-      "Build and deploy",
-      "4. Feature branches and PRs"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#hand-over-to-the-next-person",
-    "href": "modules/02-build-and-deploy/04-feature-branches-and-prs.html#hand-over-to-the-next-person",
-    "title": "4. Feature branches and pull requests",
-    "section": "4.8 Hand over to the next person",
-    "text": "4.8 Hand over to the next person\nTell the next teammate the pull request is merged. They start again at 4.2; git pull brings your change into their develop.\n\n\n\n\n\n\nNoteIf you get a merge conflict\n\n\n\n\n\nIf two people edited the same lines, GitHub reports This branch has conflicts. On your branch:\ngit switch develop\ngit pull\ngit switch feature/7-add-aoife-to-team-page\ngit merge develop\nOpen the file, keep both cards, delete the &lt;&lt;&lt;&lt;&lt;&lt;&lt;, ======= and &gt;&gt;&gt;&gt;&gt;&gt;&gt; lines, then commit and push. The pull request updates and CI runs again.\n\n\n\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nEvery member has one merged pull request, approved by a teammate, and the team page on develop shows every card.",
-    "crumbs": [
-      "Build and deploy",
-      "4. Feature branches and PRs"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html",
-    "href": "modules/02-build-and-deploy/02-test-server.html",
-    "title": "2. Create the test server on AWS",
-    "section": "",
-    "text": "Who: one driver per team, in their own AWS Academy lab; the rest of the team watches and checks each step. Goal: an EC2 instance running Docker and a GitHub runner labelled test, which deploys develop every time a pull request is merged into it.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html#start-the-lab",
-    "href": "modules/02-build-and-deploy/02-test-server.html#start-the-lab",
-    "title": "2. Create the test server on AWS",
-    "section": "2.1 Start the lab",
-    "text": "2.1 Start the lab\n\nSign in to AWS Academy and open the course your lecturer enrolled you in (Cloud Web Application Builder).\nOpen the lab and click Start Lab. Wait until the dot next to AWS turns green.\nClick AWS to open the AWS console. Leave the region as the lab sets it (usually N. Virginia, us-east-1).\nIn the lab window, open AWS Details and click Download PEM. Save labsuser.pem somewhere you can find it.\n\n\n\n\n\n\n\nWarningBudget\n\n\n\nYour lab account has a fixed budget. A t3.medium costs a few cents an hour while it is running. Stop the instance when your team is finished for the week, and never create more than this lesson and the next one ask for.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html#create-a-security-group",
-    "href": "modules/02-build-and-deploy/02-test-server.html#create-a-security-group",
-    "title": "2. Create the test server on AWS",
-    "section": "2.2 Create a security group",
-    "text": "2.2 Create a security group\nEC2 → Security Groups → Create security group:\n\nName: gallery-web\nDescription: Gallery app servers\nVPC: the lab’s default VPC\nInbound rules:\n\nSSH, port 22, source My IP\nHTTP, port 80, source Anywhere-IPv4\n\nOutbound rules: leave the default (All traffic to 0.0.0.0/0). The server needs it to download packages and reach GitHub.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html#launch-the-instance",
-    "href": "modules/02-build-and-deploy/02-test-server.html#launch-the-instance",
-    "title": "2. Create the test server on AWS",
-    "section": "2.3 Launch the instance",
-    "text": "2.3 Launch the instance\nEC2 → Instances → Launch instances:\n\n\n\n\n\n\n\nSetting\nValue\n\n\n\n\nName\ngallery-test\n\n\nImage (AMI)\nUbuntu Server 24.04 LTS, 64-bit (x86)\n\n\nInstance type\nt3.medium. A Maven build plus the app needs about 4 GB of memory; smaller types run out\n\n\nKey pair\nvockey\n\n\nNetwork settings → Edit\nSubnet: a public subnet. Auto-assign public IP: Enable. Security group: Select existing → gallery-web\n\n\nStorage\n20 GiB, gp3\n\n\n\nClick Launch instance, then open the instance and wait until Instance state is Running and Status checks pass. Copy its Public IPv4 address.\n\n\n\n\n\n\nImportant\n\n\n\nIf the instance has no public IPv4 address, or sits in a private subnet, it cannot reach the internet and every later step fails. Terminate it and launch again with the settings above.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html#connect-over-ssh",
-    "href": "modules/02-build-and-deploy/02-test-server.html#connect-over-ssh",
-    "title": "2. Create the test server on AWS",
-    "section": "2.4 Connect over SSH",
-    "text": "2.4 Connect over SSH\n\nWindows (PowerShell)macOS / Linux\n\n\nThe first time only, restrict the key file to your user, or SSH refuses to use it:\nicacls labsuser.pem /inheritance:r /grant:r \"$($env:USERNAME):R\"\nThen connect:\nssh -i labsuser.pem ubuntu@&lt;public-ip&gt;\n\n\nchmod 400 labsuser.pem\nssh -i labsuser.pem ubuntu@&lt;public-ip&gt;\n\n\n\nType yes when asked about the host fingerprint. The prompt changes to ubuntu@ip-…, which means you are on the server. Every command from here to 2.7 runs on the server.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html#check-the-server-can-reach-the-internet",
-    "href": "modules/02-build-and-deploy/02-test-server.html#check-the-server-can-reach-the-internet",
-    "title": "2. Create the test server on AWS",
-    "section": "2.5 Check the server can reach the internet",
-    "text": "2.5 Check the server can reach the internet\ncurl -4 -m 5 -sI https://github.com | head -1\nYou should see HTTP/2 200. If the command hangs and prints nothing, the server has no internet access: check it has a public IP, that its subnet’s route table sends 0.0.0.0/0 to an igw- target, and that gallery-web still allows all outbound traffic.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html#install-docker",
-    "href": "modules/02-build-and-deploy/02-test-server.html#install-docker",
-    "title": "2. Create the test server on AWS",
-    "section": "2.6 Install Docker",
-    "text": "2.6 Install Docker\nsudo apt-get update\nsudo apt-get install -y docker.io\nsudo usermod -aG docker ubuntu\nexit\nexit logs you out so the new group membership applies. Reconnect with the same ssh command, then check:\ndocker run --rm hello-world\nIt should print Hello from Docker! without needing sudo.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html#install-the-github-runner",
-    "href": "modules/02-build-and-deploy/02-test-server.html#install-the-github-runner",
-    "title": "2. Create the test server on AWS",
-    "section": "2.7 Install the GitHub runner",
-    "text": "2.7 Install the GitHub runner\nThe runner is a small program that asks GitHub for jobs and runs them on this server.\nGet a registration token from your lecturer. Only the repo owner can create one, and it expires after one hour, so ask when you reach this step.\nDownload the latest runner:\nmkdir ~/actions-runner && cd ~/actions-runner\nRUNNER_VERSION=$(curl -s https://api.github.com/repos/actions/runner/releases/latest | grep -oP '\"tag_name\": \"v\\K[^\"]+')\ncurl -sL -o runner.tar.gz https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz\ntar xzf runner.tar.gz\nRegister it with your team repo, using the URL from class without .git, and the token:\n./config.sh --url https://github.com/&lt;lecturer&gt;/&lt;team-repo&gt; --token &lt;TOKEN&gt; --name gallery-test --labels test --unattended\nIt ends with √ Settings Saved. The runner gets the labels self-hosted, Linux, X64 and test. The test label is how the deploy workflow finds this server.\nIf it stops with a message about missing .NET dependencies, run sudo ./bin/installdependencies.sh and then the config.sh command again.\nInstall the runner as a service, so it starts again whenever the instance starts:\nsudo ./svc.sh install\nsudo ./svc.sh start\nsudo ./svc.sh status\nThe status shows active (running) and, near the bottom, Listening for Jobs. Your lecturer can also see the runner as Idle in the repo’s runner list.\n\n\n\n\n\n\nWarning\n\n\n\nDo not run ./run.sh. It runs the runner only while your SSH session stays open; the service replaces it.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html#add-the-workflows",
-    "href": "modules/02-build-and-deploy/02-test-server.html#add-the-workflows",
-    "title": "2. Create the test server on AWS",
-    "section": "2.8 Add the workflows",
-    "text": "2.8 Add the workflows\nTwo workflow files tell GitHub what to do. Add them on your laptop, through a pull request like any other change (step 4 covers pull requests in detail).\ngit switch develop\ngit pull\ngit switch -c feature/add-test-pipeline\nCreate .github/workflows/ci.yml. It runs on GitHub’s own machines for every pull request, and a red result blocks the merge:\nname: ci\non:\n  pull_request:\n    branches: [develop, main]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n      - uses: actions/setup-java@v5\n        with:\n          distribution: temurin\n          java-version: '17'\n          cache: maven\n      - run: chmod +x mvnw\n      - run: ./mvnw -B verify\nCreate .github/workflows/deploy-test.yml. It runs on the server labelled test every time something is merged into develop:\nname: deploy-test\non:\n  push:\n    branches: [develop]\n  workflow_dispatch:\nconcurrency: deploy-test\njobs:\n  deploy:\n    runs-on: [self-hosted, test]\n    steps:\n      - uses: actions/checkout@v7\n      - name: Build the image\n        run: |\n          chmod +x mvnw\n          docker build -t gallery:test .\n      - name: Replace the running container\n        run: |\n          docker rm -f gallery || true\n          docker run -d --name gallery --restart unless-stopped \\\n            -p 80:8080 -e SPRING_PROFILES_ACTIVE=test gallery:test\n      - name: Wait for the app to answer\n        run: |\n          for i in $(seq 1 30); do\n            if curl -fs http://localhost/login &gt; /dev/null; then echo \"App is up\"; exit 0; fi\n            sleep 2\n          done\n          docker logs gallery\n          exit 1\n      - name: Remove old images\n        run: docker image prune -f\nWhat it does, line by line:\n\nruns-on: [self-hosted, test] picks the runner with both labels: your test server.\nchmod +x mvnw makes the Maven wrapper executable, in case it was committed from Windows without that permission.\ndocker build builds the app inside Docker from the repo’s Dockerfile: compile with the JDK, then copy the jar onto a smaller Java runtime image.\ndocker run starts the app with the test profile and maps port 80 on the server to the app’s port 8080. --restart unless-stopped starts it again whenever the instance restarts.\nThe wait step checks /login, which is public, and prints the app’s log if it never answers.\n\nCommit, push and open a pull request into develop:\ngit add .github/workflows\ngit commit -m \"Add CI and test deployment workflows\"\ngit push -u origin feature/add-test-pipeline\nThe ci check runs on the pull request. When it is green, a teammate approves and merges it. The merge into develop starts the first deploy-test run.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html#check-the-first-deployment",
-    "href": "modules/02-build-and-deploy/02-test-server.html#check-the-first-deployment",
-    "title": "2. Create the test server on AWS",
-    "section": "2.9 Check the first deployment",
-    "text": "2.9 Check the first deployment\n\nOn GitHub, open the Actions tab and click the deploy-test run. The first build takes several minutes while Maven downloads its dependencies.\nWhen it is green, open http://&lt;public-ip&gt;/ in your browser.\n\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nThe Gallery home page loads from http://&lt;test-ip&gt;/. Post the test server’s address on your team’s board: from now on, every merge into develop appears there a few minutes later.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/02-test-server.html#between-lab-sessions",
-    "href": "modules/02-build-and-deploy/02-test-server.html#between-lab-sessions",
-    "title": "2. Create the test server on AWS",
-    "section": "Between lab sessions",
-    "text": "Between lab sessions\n\nWhen the lab ends, the instance may be stopped. When you start the lab again, start the instance if it is not already running. The runner service and the app container start by themselves.\nThe public IP changes each time the instance starts. Check the new address in the console and update it on your board.\nWhile the instance is stopped, deploy jobs wait in the queue as Queued. They run once the instance is back, or fail after 24 hours.",
-    "crumbs": [
-      "Build and deploy",
-      "2. Test server on AWS"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/00-overview.html",
-    "href": "modules/02-build-and-deploy/00-overview.html",
-    "title": "Build and deploy: overview",
-    "section": "",
-    "text": "In this module your team takes the Gallery skeleton from your laptops to two servers on AWS: a test server that always runs the latest develop, and a prod server that runs the latest release tag on main.",
-    "crumbs": [
-      "Build and deploy",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/00-overview.html#the-whole-process",
-    "href": "modules/02-build-and-deploy/00-overview.html#the-whole-process",
-    "title": "Build and deploy: overview",
-    "section": "The whole process",
-    "text": "The whole process\n\n\n\n\n\nflowchart LR\n  L[\"Laptops&lt;br/&gt;dev environment\"] --&gt;|push feature branch| G[\"GitHub&lt;br/&gt;team repo\"]\n  G --&gt;|pull request| CI[\"CI workflow&lt;br/&gt;mvnw verify\"]\n  G --&gt;|merge to develop| T[\"Test EC2&lt;br/&gt;runner + Docker\"]\n  G --&gt;|tag v* on main| P[\"Prod EC2&lt;br/&gt;runner + Docker\"]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEnvironment\nWhere\nRuns\nUpdated when\n\n\n\n\ndev\nYour laptop\nWhatever branch you have checked out\nYou run it\n\n\ntest\nEC2 instance with the label test\nThe latest commit on develop\nA PR is merged into develop\n\n\nprod\nEC2 instance with the label prod\nThe latest release tag, e.g. v0.1.0\nA tag is pushed on main\n\n\n\nEach EC2 instance runs a GitHub self-hosted runner. The runner connects out to GitHub and asks for jobs; GitHub never connects in. That is why the servers only need port 80 open to the world, and why it does not matter that their public IP changes between lab sessions.",
-    "crumbs": [
-      "Build and deploy",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/00-overview.html#the-steps",
-    "href": "modules/02-build-and-deploy/00-overview.html#the-steps",
-    "title": "Build and deploy: overview",
-    "section": "The steps",
-    "text": "The steps\n\nClone the team repo and run it locally\nCreate the test server on AWS\nCreate the prod server on AWS\nFeature branches and pull requests\nCheck the change on the test server\nRelease: pull request to main and tag\nCheck the prod deployment\n\nSteps 1 and 4 are done by every team member. Steps 2 and 3 are done once per team: one person drives while the others watch, and you swap drivers between steps 2 and 3.",
-    "crumbs": [
-      "Build and deploy",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/00-overview.html#what-you-need",
-    "href": "modules/02-build-and-deploy/00-overview.html#what-you-need",
-    "title": "Build and deploy: overview",
-    "section": "What you need",
-    "text": "What you need\n\nA GitHub account, with the invitation to your team repo accepted\nJDK 17, Docker Desktop and Git on your laptop\nAccess to the AWS Academy course your lecturer has enrolled you in\nAn SSH client: the ssh command in PowerShell, Terminal or Git Bash\n\n\n\n\n\n\n\nNoteFor the lecturer: before class\n\n\n\n\n\n\nCreate one private repo per team from the Gallery skeleton on your GitHub account, and add each student as a collaborator with Write access.\nProtect develop and main: require a pull request, one approval, and the build status check from ci.yml. On a personal account, branch protection for private repos needs GitHub Pro (free for teachers through GitHub Education).\nMerge settings. In Settings → General → Pull Requests, allow both squash merging (feature pull requests, step 4) and merge commits (release pull requests, step 6).\nRunner tokens. Only the repo owner can register a self-hosted runner, so students cannot open Settings → Actions → Runners. When a team reaches step 2 or 3, generate a registration token (valid for one hour) and give it to the driver:\ngh api -X POST repos/&lt;owner&gt;/&lt;team-repo&gt;/actions/runners/registration-token --jq .token\nOr open Settings → Actions → Runners → New self-hosted runner and copy the token from the Configure block.\nActions minutes. ci.yml runs on GitHub’s own runners and uses your account’s included minutes for private repos. The deploy workflows run on the teams’ EC2 runners and use none.\nWorkflows. Steps 2 and 3 have students add ci.yml, deploy-test.yml and deploy-prod.yml through pull requests. If you add them to the skeleton beforehand, tell students to skip those parts.\nCheck the skeleton builds on Linux. mvnw should be committed as executable (git update-index --chmod=+x mvnw), and .mvn/wrapper/maven-wrapper.properties must be present. The workflows run chmod +x mvnw as a safety net, but cannot replace a missing wrapper file.",
-    "crumbs": [
-      "Build and deploy",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Multimedia Project",
-    "section": "",
-    "text": "Course Cover",
-    "crumbs": [
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "index.html#who-this-is-for",
-    "href": "index.html#who-this-is-for",
-    "title": "Multimedia Project",
-    "section": "Who This Is For",
-    "text": "Who This Is For\nBeginners - no prior experience required.",
-    "crumbs": [
-      "Overview"
-    ]
-  },
-  {
     "objectID": "modules/01-introduction/01-welcome.html",
     "href": "modules/01-introduction/01-welcome.html",
     "title": "Welcome",
     "section": "",
-    "text": "Start writing your first lesson here. Use Markdown syntax to format your content.\n\n\n\nKey concept one\nKey concept two\nKey concept three\n\n\n\n\nReplace this content with your lesson material.",
+    "text": "In the Module PJDS 07082: Multimedia Project you work in a small team to build a web application, the Gallery, and to run it the way a professional software team would. You start from a shared skeleton project, make changes on your own laptop / PC, and release them to real servers on AWS.\nThe focus is on the whole path from an idea on your laptop to a running site. You collaborate through GitHub, review each other’s work, and deploy automatically to a test server and then a prod server.",
     "crumbs": [
-      "Getting Started"
+      "Introduction",
+      "Welcome"
     ]
   },
   {
-    "objectID": "modules/01-introduction/01-welcome.html#introduction",
-    "href": "modules/01-introduction/01-welcome.html#introduction",
+    "objectID": "modules/01-introduction/01-welcome.html#about-this-course",
+    "href": "modules/01-introduction/01-welcome.html#about-this-course",
     "title": "Welcome",
     "section": "",
-    "text": "Start writing your first lesson here. Use Markdown syntax to format your content.\n\n\n\nKey concept one\nKey concept two\nKey concept three\n\n\n\n\nReplace this content with your lesson material.",
+    "text": "In the Module PJDS 07082: Multimedia Project you work in a small team to build a web application, the Gallery, and to run it the way a professional software team would. You start from a shared skeleton project, make changes on your own laptop / PC, and release them to real servers on AWS.\nThe focus is on the whole path from an idea on your laptop to a running site. You collaborate through GitHub, review each other’s work, and deploy automatically to a test server and then a prod server.",
     "crumbs": [
-      "Getting Started"
+      "Introduction",
+      "Welcome"
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html",
-    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html",
-    "title": "1. Clone the team repo and run it locally",
-    "section": "",
-    "text": "Who: every team member, on their own laptop. Goal: the Gallery skeleton running on your laptop, with its MySQL database running in Docker.",
+    "objectID": "modules/01-introduction/01-welcome.html#what-youll-learn",
+    "href": "modules/01-introduction/01-welcome.html#what-youll-learn",
+    "title": "Welcome",
+    "section": "What you’ll learn",
+    "text": "What you’ll learn\nBy the end of this lesson you will be able to:\n\nClone your team’s repository and run the Gallery on your own laptop.\nSet up and configure test and prod servers on AWS.\nUse feature branches and pull requests to make changes without breaking the work of others.\nExplain how a change moves from a laptop/PC to the test server and then to production.\nRelease a version by merging to main and tagging it, then check that it is live on the prod server.",
     "crumbs": [
-      "Build and deploy",
-      "1. Clone and run locally"
+      "Introduction",
+      "Welcome"
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#check-your-tools",
-    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#check-your-tools",
-    "title": "1. Clone the team repo and run it locally",
-    "section": "1.1 Check your tools",
-    "text": "1.1 Check your tools\nOpen a terminal (PowerShell, Terminal or Git Bash) and run each check:\n\n\n\n\n\n\n\n\nTool\nCheck\nExpect\n\n\n\n\nJDK 17\njava -version\n17.x\n\n\nDocker\ndocker --version\nA version number, and Docker Desktop running\n\n\nGit\ngit --version\nA version number\n\n\n\nYou do not need Maven: the repo includes the Maven wrapper (mvnw), which downloads the right version itself.",
+    "objectID": "modules/01-introduction/01-welcome.html#how-the-course-works",
+    "href": "modules/01-introduction/01-welcome.html#how-the-course-works",
+    "title": "Welcome",
+    "section": "How the course works",
+    "text": "How the course works\nYour team works in one shared GitHub repository, and every change goes through a pull request.\n\n\n\nEnvironment\nWhere it runs\nUpdated when\n\n\n\n\ndev\nYour laptop\nYou run it\n\n\ntest\nAn AWS server\nA pull request is merged into develop\n\n\nprod\nAn AWS server\nA release tag is pushed on main\n\n\n\nSome steps are done by every team member. Others are done once per team, with one person driving while the others watch and the driver changing between steps.",
     "crumbs": [
-      "Build and deploy",
-      "1. Clone and run locally"
+      "Introduction",
+      "Welcome"
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#accept-the-invitation",
-    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#accept-the-invitation",
-    "title": "1. Clone the team repo and run it locally",
-    "section": "1.2 Accept the invitation",
-    "text": "1.2 Accept the invitation\nYour lecturer has added you to your team’s repo on their GitHub account. Accept the invitation from the email GitHub sent you, or from https://github.com/notifications. Until you accept, the repo URL gives a 404.",
+    "objectID": "modules/01-introduction/01-welcome.html#what-you-need",
+    "href": "modules/01-introduction/01-welcome.html#what-you-need",
+    "title": "Welcome",
+    "section": "What you need",
+    "text": "What you need\n\nA GitHub account, with the invitation to your team repo accepted\nJDK 17, Docker Desktop and Git on your laptop\nAccess to the AWS Academy course your lecturer has enrolled you in\nAn SSH client, such as the ssh command in PowerShell, Terminal or Git Bash",
     "crumbs": [
-      "Build and deploy",
-      "1. Clone and run locally"
+      "Introduction",
+      "Welcome"
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#clone-the-repo",
-    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#clone-the-repo",
-    "title": "1. Clone the team repo and run it locally",
-    "section": "1.3 Clone the repo",
-    "text": "1.3 Clone the repo\nUse the URL your lecturer gives you in class. It looks like https://github.com/&lt;lecturer&gt;/&lt;team-repo&gt;.git.\n\nIntelliJCommand line\n\n\n\nFile → New → Project from Version Control.\nPaste the URL and choose a folder.\nWhen asked, sign in with GitHub in the browser.\nClick Clone, then Trust Project.\nBottom right, click the branch name (main) and choose origin/develop → Checkout.\n\n\n\ngit clone https://github.com/&lt;lecturer&gt;/&lt;team-repo&gt;.git\ncd &lt;team-repo&gt;\ngit switch develop\nThe repo is private, so Git asks you to sign in. On Windows, a browser window opens: sign in to GitHub there. Do not type your GitHub password at a terminal prompt; GitHub rejects passwords for Git.\n\n\n\nYou work from develop, never main. main only changes at a release (step 6).",
+    "objectID": "modules/01-introduction/01-welcome.html#where-to-start",
+    "href": "modules/01-introduction/01-welcome.html#where-to-start",
+    "title": "Welcome",
+    "section": "Where to start",
+    "text": "Where to start\nBegin with the Build and deploy overview. It shows the whole process in one diagram and lists the seven steps you will follow.",
     "crumbs": [
-      "Build and deploy",
-      "1. Clone and run locally"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#start-the-database",
-    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#start-the-database",
-    "title": "1. Clone the team repo and run it locally",
-    "section": "1.4 Start the database",
-    "text": "1.4 Start the database\nFrom the repo folder:\ndocker compose up -d db\nThe first run downloads the MySQL image, which takes a minute. Then check it:\ndocker compose ps\nThe db service should show running (healthy). Confirm you can reach the gallery database:\ndocker compose exec db mysql -ugallery -pgallerypass -e \"SHOW DATABASES;\"\nThe list should include gallery. The warning about using a password on the command line is expected.\n\n\n\n\n\n\nNote\n\n\n\nThe app does not use the database yet. It connects from week 3, when persistence is added. Starting it now means you meet any Docker problems this week rather than mid-sprint.",
-    "crumbs": [
-      "Build and deploy",
-      "1. Clone and run locally"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#run-the-app",
-    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#run-the-app",
-    "title": "1. Clone the team repo and run it locally",
-    "section": "1.5 Run the app",
-    "text": "1.5 Run the app\n\nIntelliJCommand line\n\n\nOpen src/main/java/ie/tus/gallery/GalleryApplication.java and click the green ▶ next to main.\n\n\n./mvnw spring-boot:run\nIn PowerShell, use .\\mvnw.cmd spring-boot:run. On macOS or Linux, if you get Permission denied, run chmod +x mvnw once.\n\n\n\nOpen http://localhost:8080. Check:\n\nThe home page loads\nTeam opens the team page\nLogin with student1 / Password123! reaches the dashboard\n\nThese are dev-only accounts; they must never reach prod (step 7 explains).\nStop the app with Ctrl+C, or the red ■ in IntelliJ.",
-    "crumbs": [
-      "Build and deploy",
-      "1. Clone and run locally"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#run-the-build-ci-runs",
-    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#run-the-build-ci-runs",
-    "title": "1. Clone the team repo and run it locally",
-    "section": "1.6 Run the build CI runs",
-    "text": "1.6 Run the build CI runs\n./mvnw verify\n(.\\mvnw.cmd verify in PowerShell.) It compiles the app, runs its tests and packages it. If it ends with BUILD SUCCESS, your laptop builds the app exactly as the pipeline will.",
-    "crumbs": [
-      "Build and deploy",
-      "1. Clone and run locally"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#optional-run-the-whole-stack-in-docker",
-    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#optional-run-the-whole-stack-in-docker",
-    "title": "1. Clone the team repo and run it locally",
-    "section": "1.7 Optional: run the whole stack in Docker",
-    "text": "1.7 Optional: run the whole stack in Docker\ndocker compose up --build\nThis builds the app’s Docker image from the Dockerfile and runs it next to MySQL, which is close to what the EC2 servers will do. Open http://localhost:8080, then stop it with Ctrl+C and run docker compose down.",
-    "crumbs": [
-      "Build and deploy",
-      "1. Clone and run locally"
-    ]
-  },
-  {
-    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#troubleshooting",
-    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#troubleshooting",
-    "title": "1. Clone the team repo and run it locally",
-    "section": "Troubleshooting",
-    "text": "Troubleshooting\n\n\n\n\n\n\n\nSymptom\nFix\n\n\n\n\nRepository not found when cloning\nYou have not accepted the invitation, or you are signed in to Git as a different GitHub account\n\n\nCannot connect to the Docker daemon\nStart Docker Desktop and wait until it says it is running\n\n\nport is already allocated for 3306\nAnother MySQL is running on your laptop. Stop it, or change the left-hand port in docker-compose.yml for yourself only and do not commit that change\n\n\nPort 8080 already in use\nAn old run is still going. Stop it in IntelliJ, or close the terminal running it\n\n\nInvalid source release: 17\nYour terminal is using another JDK. Check java -version and set JAVA_HOME to a JDK 17\n\n\ncannot read distributionUrl property\n.mvn/wrapper/maven-wrapper.properties is missing from the repo. Tell your lecturer\n\n\n\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nApp running at localhost:8080, db healthy in Docker, and mvnw verify green. Tell your team, and move on when everyone has reached this point.",
-    "crumbs": [
-      "Build and deploy",
-      "1. Clone and run locally"
+      "Introduction",
+      "Welcome"
     ]
   },
   {
@@ -483,10 +385,10 @@
     "href": "modules/02-build-and-deploy/03-prod-server.html",
     "title": "3. Create the prod server on AWS",
     "section": "",
-    "text": "Who: a different driver from step 2, in their own AWS Academy lab. Spreading the servers across two accounts shares the cost between two budgets. Goal: a second EC2 instance, with a runner labelled prod, which deploys only release tags on main.\nThe prod server is built exactly like the test server. Only four things differ:",
+    "text": "Who: a different driver from step 2, in their own AWS Academy lab. Spreading the servers across two accounts shares the cost between two budgets. Goal: a second EC2 instance, with a runner labelled prod, which deploys only release tags on main.\nThe prod server is built exactly like the test server. Only five things differ:",
     "crumbs": [
-      "Build and deploy",
-      "3. Prod server on AWS"
+      "Build And Deploy",
+      "3. Create the prod server on AWS"
     ]
   },
   {
@@ -496,8 +398,8 @@
     "section": "3.1 Build the server",
     "text": "3.1 Build the server\nFollow step 2 from 2.1 to 2.6, with these changes:\n\nStart the lab in your own account. Create the gallery-web security group there too (2.2), since security groups belong to one account.\nName the instance gallery-prod (2.3).\n\nCheck docker run --rm hello-world works before moving on.",
     "crumbs": [
-      "Build and deploy",
-      "3. Prod server on AWS"
+      "Build And Deploy",
+      "3. Create the prod server on AWS"
     ]
   },
   {
@@ -507,8 +409,8 @@
     "section": "3.2 Install the runner",
     "text": "3.2 Install the runner\nAsk your lecturer for a new registration token; tokens expire after an hour. Then on the prod server:\nmkdir ~/actions-runner && cd ~/actions-runner\nRUNNER_VERSION=$(curl -s https://api.github.com/repos/actions/runner/releases/latest | grep -oP '\"tag_name\": \"v\\K[^\"]+')\ncurl -sL -o runner.tar.gz https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz\ntar xzf runner.tar.gz\n./config.sh --url https://github.com/&lt;lecturer&gt;/&lt;team-repo&gt; --token &lt;TOKEN&gt; --name gallery-prod --labels prod --unattended\nsudo ./svc.sh install\nsudo ./svc.sh start\nsudo ./svc.sh status\nCheck for active (running) and Listening for Jobs.\n\n\n\n\n\n\nNoteHow “polling for tags” works\n\n\n\nThe runner keeps a connection open to GitHub and asks “any jobs for prod?”. GitHub only creates such a job when someone pushes a tag beginning with v. Until then, the prod server does nothing, however many times develop changes.",
     "crumbs": [
-      "Build and deploy",
-      "3. Prod server on AWS"
+      "Build And Deploy",
+      "3. Create the prod server on AWS"
     ]
   },
   {
@@ -516,10 +418,10 @@
     "href": "modules/02-build-and-deploy/03-prod-server.html#add-the-prod-workflow",
     "title": "3. Create the prod server on AWS",
     "section": "3.3 Add the prod workflow",
-    "text": "3.3 Add the prod workflow\nOn your laptop, through a pull request into develop:\ngit switch develop\ngit pull\ngit switch -c feature/add-prod-pipeline\nCreate .github/workflows/deploy-prod.yml:\nname: deploy-prod\non:\n  push:\n    tags: ['v*']\nconcurrency: deploy-prod\njobs:\n  deploy:\n    runs-on: [self-hosted, prod]\n    steps:\n      - uses: actions/checkout@v7\n        with:\n          fetch-depth: 0\n      - name: Check the tag is on main\n        run: |\n          if ! git merge-base --is-ancestor \"$GITHUB_SHA\" origin/main; then\n            echo \"Tag ${GITHUB_REF_NAME} is not on main. Only tag commits on main.\"\n            exit 1\n          fi\n      - name: Build the image\n        run: |\n          chmod +x mvnw\n          docker build -t gallery:${GITHUB_REF_NAME} .\n      - name: Replace the running container\n        run: |\n          docker rm -f gallery || true\n          docker run -d --name gallery --restart unless-stopped \\\n            -p 80:8080 -e SPRING_PROFILES_ACTIVE=prod gallery:${GITHUB_REF_NAME}\n      - name: Wait for the app to answer\n        run: |\n          for i in $(seq 1 30); do\n            if curl -fs http://localhost/login &gt; /dev/null; then echo \"Release ${GITHUB_REF_NAME} is up\"; exit 0; fi\n            sleep 2\n          done\n          docker logs gallery\n          exit 1\nHow it differs from deploy-test.yml:\n\non: push: tags: ['v*'] runs it for tags such as v0.1.0, and never for branch pushes.\nfetch-depth: 0 downloads the full history, so the next step can see main.\nCheck the tag is on main stops the deployment if someone tags a commit that has not been through a release pull request.\nThe image is named after the tag, e.g. gallery:v0.1.0. Older release images stay on the server, which makes rolling back possible (step 7).\n\nCommit, push and open a pull request into develop. When ci is green, a teammate approves and merges it.\nMerging it into develop does not deploy anything to prod: there is no tag yet, and the file only reaches main at your first release (step 6).\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nTwo servers, each with a runner listening: gallery-test (label test) and gallery-prod (label prod). http://&lt;prod-ip&gt;/ does not answer yet, which is expected until step 7.",
+    "text": "3.3 Add the prod workflow\nOn your laptop, through a pull request into develop:\ngit switch develop\ngit pull\ngit switch -c feature/add-prod-pipeline\nCreate .github/workflows/deploy-prod.yml:\nname: deploy-prod\non:\n  push:\n    tags: ['v*']\nconcurrency: deploy-prod\njobs:\n  deploy:\n    runs-on: [self-hosted, prod]\n    steps:\n      - uses: actions/checkout@v7\n        with:\n          fetch-depth: 0\n      - name: Check the tag is on main\n        run: |\n          if ! git merge-base --is-ancestor \"$GITHUB_SHA\" origin/main; then\n            echo \"Tag ${GITHUB_REF_NAME} is not on main. Only tag commits on main.\"\n            exit 1\n          fi\n      - name: Build the image\n        run: |\n          chmod +x mvnw\n          docker build -t gallery:${GITHUB_REF_NAME} .\n      - name: Replace the running container\n        run: |\n          docker rm -f gallery || true\n          docker run -d --name gallery --restart unless-stopped \\\n            -p 80:8080 -e SPRING_PROFILES_ACTIVE=prod \\\n            -e APP_BUILD_INFO=\"Release ${GITHUB_REF_NAME}\" gallery:${GITHUB_REF_NAME}\n      - name: Wait for the app to answer\n        run: |\n          for i in $(seq 1 30); do\n            if curl -fs http://localhost/login &gt; /dev/null; then echo \"Release ${GITHUB_REF_NAME} is up\"; exit 0; fi\n            sleep 2\n          done\n          docker logs gallery\n          exit 1\nHow it differs from deploy-test.yml:\n\non: push: tags: ['v*'] runs it for tags such as v0.1.0, and never for branch pushes.\nfetch-depth: 0 downloads the full history, so the next step can see main.\nCheck the tag is on main stops the deployment if someone tags a commit that has not been through a release pull request.\nThe image is named after the tag, e.g. gallery:v0.1.0. Older release images stay on the server, which makes rolling back possible (step 7).\n-e APP_BUILD_INFO=\"Release ${GITHUB_REF_NAME}\" puts the tag in the footer, e.g. Release v0.1.0. GitHub sets GITHUB_REF_NAME to the tag’s name, so no lookup is needed.\n\nCommit, push and open a pull request into develop. When ci is green, a teammate approves and merges it.\nMerging it into develop does not deploy anything to prod: there is no tag yet, and the file only reaches main at your first release (step 6).\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nTwo servers, each with a runner listening: gallery-test (label test) and gallery-prod (label prod). http://&lt;prod-ip&gt;/ does not answer yet, which is expected until step 7.",
     "crumbs": [
-      "Build and deploy",
-      "3. Prod server on AWS"
+      "Build And Deploy",
+      "3. Create the prod server on AWS"
     ]
   },
   {
@@ -529,8 +431,8 @@
     "section": "",
     "text": "Who: the author of each merged pull request, with one teammate. Goal: confirm every merged change is running on the test server before anyone builds on it.",
     "crumbs": [
-      "Build and deploy",
-      "5. Check on test"
+      "Build And Deploy",
+      "5. Check the change on the test server"
     ]
   },
   {
@@ -538,10 +440,10 @@
     "href": "modules/02-build-and-deploy/05-check-on-test.html#follow-the-deployment",
     "title": "5. Check the change on the test server",
     "section": "5.1 Follow the deployment",
-    "text": "5.1 Follow the deployment\n\nOn GitHub, open Actions → deploy-test. The newest run is named after your merge commit.\nClick into it. Each step shows a tick as it finishes; Wait for the app to answer ends with App is up.\n\nA run usually takes two to five minutes. If it stays Queued with Waiting for a runner, the test server is not available: see the table below.",
+    "text": "5.1 Follow the deployment\n\nOn GitHub, open Actions → deploy-test. The newest run is named after your merge commit.\nClick into it. Each step shows a tick as it finishes; Find the pull request prints the footer label, and Wait for the app to answer ends with App is up.\n\nA run usually takes two to five minutes. If it stays Queued with Waiting for a runner, the test server is not available: see the table below.",
     "crumbs": [
-      "Build and deploy",
-      "5. Check on test"
+      "Build And Deploy",
+      "5. Check the change on the test server"
     ]
   },
   {
@@ -549,10 +451,10 @@
     "href": "modules/02-build-and-deploy/05-check-on-test.html#check-it-in-the-browser",
     "title": "5. Check the change on the test server",
     "section": "5.2 Check it in the browser",
-    "text": "5.2 Check it in the browser\nOpen http://&lt;test-ip&gt;/ and run through this checklist:\n\nThe home page loads\n/team shows your card, and everyone else’s merged so far\nLogin with student1 / Password123! reaches the dashboard\nLogging out returns you to the home page\n\nIf your change is not there, refresh with Ctrl+F5, then check the run’s commit is your merge commit.",
+    "text": "5.2 Check it in the browser\nOpen http://&lt;test-ip&gt;/ and run through this checklist:\n\nThe footer shows your pull request’s number and title, e.g. PR #7: Add Aoife to team page\nThe home page loads\n/team shows your card, and everyone else’s merged so far\nLogin with student1 / Password123! reaches the dashboard\nLogging out returns you to the home page\n\nThe footer tells you at a glance which pull request the test server is running. If it shows an earlier pull request, the deployment for yours has not finished, or failed: check Actions. Refresh with Ctrl+F5 if the page looks out of date.",
     "crumbs": [
-      "Build and deploy",
-      "5. Check on test"
+      "Build And Deploy",
+      "5. Check the change on the test server"
     ]
   },
   {
@@ -562,8 +464,8 @@
     "section": "5.3 Optional: look at the server",
     "text": "5.3 Optional: look at the server\nConnect to the test server (step 2.4) and run:\ndocker ps\ndocker logs --tail 30 gallery\ndocker ps shows the gallery container, Up for a few minutes, on 0.0.0.0:80-&gt;8080/tcp. The log ends with Spring Boot’s Started GalleryApplication.",
     "crumbs": [
-      "Build and deploy",
-      "5. Check on test"
+      "Build And Deploy",
+      "5. Check the change on the test server"
     ]
   },
   {
@@ -571,76 +473,230 @@
     "href": "modules/02-build-and-deploy/05-check-on-test.html#troubleshooting",
     "title": "5. Check the change on the test server",
     "section": "Troubleshooting",
-    "text": "Troubleshooting\n\n\n\n\n\n\n\nWhat you see\nLikely cause and fix\n\n\n\n\nRun stays Queued, Waiting for a runner\nThe lab is not running, or the instance is stopped. Start the lab, then start gallery-test\n\n\npermission denied … docker.sock\nThe runner service started before ubuntu joined the docker group. On the server: cd ~/actions-runner && sudo ./svc.sh stop && sudo ./svc.sh start, then Re-run jobs\n\n\n./mvnw: Permission denied in the build\nThe workflow is missing its chmod +x mvnw line\n\n\ncannot read distributionUrl property\n.mvn/wrapper/maven-wrapper.properties was deleted by a pull request. Restore it with a new pull request\n\n\nWait for the app to answer fails\nThe app did not start. The step prints docker logs gallery: read the first ERROR or Caused by\n\n\nThe browser times out\nThe public IP has changed (check the console), or gallery-web has lost its HTTP rule\n\n\n\nTo deploy again without a new merge, open Actions → deploy-test → Run workflow and choose develop.\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nThe test server shows every team member’s card, and the last deploy-test run is green. develop is now ready to release.",
+    "text": "Troubleshooting\n\n\n\n\n\n\n\nWhat you see\nLikely cause and fix\n\n\n\n\nRun stays Queued, Waiting for a runner\nThe lab is not running, or the instance is stopped. Start the lab, then start gallery-test\n\n\npermission denied … docker.sock\nThe runner service started before ubuntu joined the docker group. On the server: cd ~/actions-runner && sudo ./svc.sh stop && sudo ./svc.sh start, then Re-run jobs\n\n\n./mvnw: Permission denied in the build\nThe workflow is missing its chmod +x mvnw line\n\n\ncannot read distributionUrl property\n.mvn/wrapper/maven-wrapper.properties was deleted by a pull request. Restore it with a new pull request\n\n\nWait for the app to answer fails\nThe app did not start. The step prints docker logs gallery: read the first ERROR or Caused by\n\n\nThe browser times out\nThe public IP has changed (check the console), or gallery-web has lost its HTTP rule\n\n\nThe footer shows develop at … instead of a pull request\nThe commit was pushed straight to develop, not merged through a pull request; or the workflow has no pull-requests: read permission\n\n\nThe footer shows local dev on the server\nThe docker run line is missing -e APP_BUILD_INFO=\"$BUILD_INFO\"\n\n\nA page has no footer at all\nThat page does not include the footer fragment. Add &lt;footer th:replace=\"~{fragments/footer :: footer}\"&gt;&lt;/footer&gt; before &lt;/body&gt;\n\n\nA run named after the file, e.g. .github/workflows/ci.yml, fails in 0 seconds on every push\nThe workflow file is empty or not valid YAML, so GitHub cannot read it. Check the file on GitHub; if it is empty, it was committed before being saved. Fix it in a new pull request\n\n\nci fails with wget: Failed to fetch …apache-maven-…-bin.zip\nMaven Central refused the download. Click Re-run jobs → Re-run failed jobs. If your ci.yml has no Download Maven step, add it (step 2.8)\n\n\n\nTo deploy again without a new merge, open Actions → deploy-test → Run workflow and choose develop.\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nThe test server shows every team member’s card, the footer shows the last merged pull request, and the last deploy-test run is green. develop is now ready to release.",
     "crumbs": [
-      "Build and deploy",
-      "5. Check on test"
+      "Build And Deploy",
+      "5. Check the change on the test server"
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/07-check-prod.html",
-    "href": "modules/02-build-and-deploy/07-check-prod.html",
-    "title": "7. Check the prod deployment",
+    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html",
+    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html",
+    "title": "1. Clone the team repo and run it locally",
     "section": "",
-    "text": "Who: the whole team. Goal: confirm the release is running on prod, and know how to roll back if it is not.",
+    "text": "Who: every team member, on their own laptop. Goal: the Gallery skeleton running on your laptop, with its MySQL database running in Docker.",
     "crumbs": [
-      "Build and deploy",
-      "7. Check prod"
+      "Build And Deploy",
+      "1. Clone the team repo and run it locally"
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/07-check-prod.html#follow-the-deployment",
-    "href": "modules/02-build-and-deploy/07-check-prod.html#follow-the-deployment",
-    "title": "7. Check the prod deployment",
-    "section": "7.1 Follow the deployment",
-    "text": "7.1 Follow the deployment\nOpen Actions → deploy-prod. The newest run is named after your tag, e.g. v0.1.0. Check that:\n\nCheck the tag is on main passed\nWait for the app to answer ends with Release v0.1.0 is up\n\nIf the run stays Queued with Waiting for a runner, start the lab in the account that holds gallery-prod, and start the instance if it is stopped.",
+    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#check-your-tools",
+    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#check-your-tools",
+    "title": "1. Clone the team repo and run it locally",
+    "section": "1.1 Check your tools",
+    "text": "1.1 Check your tools\nOpen a terminal (PowerShell, Terminal or Git Bash) and run each check:\n\n\n\n\n\n\n\n\nTool\nCheck\nExpect\n\n\n\n\nJDK 17\njava -version\n17.x\n\n\nDocker\ndocker --version\nA version number, and Docker Desktop running\n\n\nGit\ngit --version\nA version number\n\n\n\nYou do not need Maven: the repo includes the Maven wrapper (mvnw), which downloads the right version itself.",
     "crumbs": [
-      "Build and deploy",
-      "7. Check prod"
+      "Build And Deploy",
+      "1. Clone the team repo and run it locally"
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/07-check-prod.html#check-it-in-the-browser",
-    "href": "modules/02-build-and-deploy/07-check-prod.html#check-it-in-the-browser",
-    "title": "7. Check the prod deployment",
-    "section": "7.2 Check it in the browser",
-    "text": "7.2 Check it in the browser\nOpen http://&lt;prod-ip&gt;/ and run the same checklist as on test (step 5.2):\n\nThe home page loads\n/team shows every team member’s card\nLogin and logout work\n\nProd and test should now look the same, because they run the same code. Prod uses the prod Spring profile; test uses test.",
+    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#accept-the-invitation",
+    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#accept-the-invitation",
+    "title": "1. Clone the team repo and run it locally",
+    "section": "1.2 Accept the invitation",
+    "text": "1.2 Accept the invitation\nYour lecturer has added you to your team’s repo on their GitHub account. Accept the invitation from the email GitHub sent you, or from https://github.com/notifications. Until you accept, the repo URL gives a 404.",
     "crumbs": [
-      "Build and deploy",
-      "7. Check prod"
+      "Build And Deploy",
+      "1. Clone the team repo and run it locally"
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/07-check-prod.html#confirm-which-release-is-running",
-    "href": "modules/02-build-and-deploy/07-check-prod.html#confirm-which-release-is-running",
-    "title": "7. Check the prod deployment",
-    "section": "7.3 Confirm which release is running",
-    "text": "7.3 Confirm which release is running\nOn the prod server:\ndocker ps --format '{{.Image}}  {{.Status}}'\nIt prints gallery:v0.1.0  Up … minutes. Record the release, its date and the prod URL on your team’s board: this is your deployment record.",
+    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#clone-the-repo",
+    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#clone-the-repo",
+    "title": "1. Clone the team repo and run it locally",
+    "section": "1.3 Clone the repo",
+    "text": "1.3 Clone the repo\nUse the URL your lecturer gives you in class. It looks like https://github.com/&lt;lecturer&gt;/&lt;team-repo&gt;.git.\n\nIntelliJCommand line\n\n\n\nFile → New → Project from Version Control.\nPaste the URL and choose a folder.\nWhen asked, sign in with GitHub in the browser.\nClick Clone, then Trust Project.\nBottom right, click the branch name (main) and choose origin/develop → Checkout.\n\n\n\ngit clone https://github.com/&lt;lecturer&gt;/&lt;team-repo&gt;.git\ncd &lt;team-repo&gt;\ngit switch develop\nThe repo is private, so Git asks you to sign in. On Windows, a browser window opens: sign in to GitHub there. Do not type your GitHub password at a terminal prompt; GitHub rejects passwords for Git.\n\n\n\nYou work from develop, never main. main only changes at a release (step 6).",
     "crumbs": [
-      "Build and deploy",
-      "7. Check prod"
+      "Build And Deploy",
+      "1. Clone the team repo and run it locally"
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/07-check-prod.html#roll-back-a-bad-release",
-    "href": "modules/02-build-and-deploy/07-check-prod.html#roll-back-a-bad-release",
-    "title": "7. Check the prod deployment",
-    "section": "7.4 Roll back a bad release",
-    "text": "7.4 Roll back a bad release\nIf a release breaks prod, put the previous one back first and fix the problem afterwards.\nFrom GitHub: open Actions → deploy-prod, click the run for the previous tag (e.g. v0.1.0) and choose Re-run all jobs. It builds and deploys that tag again.\nOn the server, faster: the previous image is still there, so start it directly:\ndocker images gallery\ndocker rm -f gallery\ndocker run -d --name gallery --restart unless-stopped \\\n  -p 80:8080 -e SPRING_PROFILES_ACTIVE=prod gallery:v0.1.0\nThen fix the problem on a feature branch, check it on test, and release a new version, e.g. v0.2.1 (steps 4 to 6).\n\n\n\n\n\n\nWarningBefore the assessed release\n\n\n\nThe skeleton’s student1 and other in-memory accounts are a week 1 convenience. Before v1.0.0 in week 11, login must use real accounts stored in the database, and the seed accounts must be gone from prod.",
+    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#start-the-database",
+    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#start-the-database",
+    "title": "1. Clone the team repo and run it locally",
+    "section": "1.4 Start the database",
+    "text": "1.4 Start the database\nFrom the repo folder:\ndocker compose up -d db\nThe first run downloads the MySQL image, which takes a minute. Then check it:\ndocker compose ps\nThe db service should show running (healthy). Confirm you can reach the gallery database:\ndocker compose exec db mysql -ugallery -pgallerypass -e \"SHOW DATABASES;\"\nThe list should include gallery. The warning about using a password on the command line is expected.\n\n\n\n\n\n\nNote\n\n\n\nThe app does not use the database yet. It connects from week 3, when persistence is added. Starting it now means you meet any Docker problems this week rather than mid-sprint.",
     "crumbs": [
-      "Build and deploy",
-      "7. Check prod"
+      "Build And Deploy",
+      "1. Clone the team repo and run it locally"
     ]
   },
   {
-    "objectID": "modules/02-build-and-deploy/07-check-prod.html#what-you-have-built",
-    "href": "modules/02-build-and-deploy/07-check-prod.html#what-you-have-built",
-    "title": "7. Check the prod deployment",
-    "section": "What you have built",
-    "text": "What you have built\n\n\n\n\n\nflowchart LR\n  F[\"feature/*\"] --&gt;|PR + review| D[\"develop\"] --&gt;|auto| T[\"Test EC2\"]\n  D --&gt;|release PR| M[\"main\"] --&gt;|tag v*| P[\"Prod EC2\"]\n\n\n\n\n\n\nFrom now on, every change follows this path: a feature branch, a reviewed pull request into develop, a check on test, then a release pull request into main and a tag to reach prod.\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nhttp://&lt;prod-ip&gt;/ serves release v0.1.0, the team knows both server addresses, and everyone can explain how a change reaches prod.",
+    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#run-the-app",
+    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#run-the-app",
+    "title": "1. Clone the team repo and run it locally",
+    "section": "1.5 Run the app",
+    "text": "1.5 Run the app\n\nIntelliJCommand line\n\n\nOpen src/main/java/ie/tus/gallery/GalleryApplication.java and click the green ▶ next to main.\n\n\n./mvnw spring-boot:run\nIn PowerShell, use .\\mvnw.cmd spring-boot:run. On macOS or Linux, if you get Permission denied, run chmod +x mvnw once.\n\n\n\nOpen http://localhost:8080. Check:\n\nThe home page loads\nTeam opens the team page\nLogin with student1 / Password123! reaches the dashboard\n\nThese are dev-only accounts; they must never reach prod (step 7 explains).\nStop the app with Ctrl+C, or the red ■ in IntelliJ.",
     "crumbs": [
-      "Build and deploy",
-      "7. Check prod"
+      "Build And Deploy",
+      "1. Clone the team repo and run it locally"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#run-the-build-ci-runs",
+    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#run-the-build-ci-runs",
+    "title": "1. Clone the team repo and run it locally",
+    "section": "1.6 Run the build CI runs",
+    "text": "1.6 Run the build CI runs\n./mvnw verify\n(.\\mvnw.cmd verify in PowerShell.) It compiles the app, runs its tests and packages it. If it ends with BUILD SUCCESS, your laptop builds the app exactly as the pipeline will.",
+    "crumbs": [
+      "Build And Deploy",
+      "1. Clone the team repo and run it locally"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#optional-run-the-whole-stack-in-docker",
+    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#optional-run-the-whole-stack-in-docker",
+    "title": "1. Clone the team repo and run it locally",
+    "section": "1.7 Optional: run the whole stack in Docker",
+    "text": "1.7 Optional: run the whole stack in Docker\ndocker compose up --build\nThis builds the app’s Docker image from the Dockerfile and runs it next to MySQL, which is close to what the EC2 servers will do. Open http://localhost:8080, then stop it with Ctrl+C and run docker compose down.",
+    "crumbs": [
+      "Build And Deploy",
+      "1. Clone the team repo and run it locally"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/01-clone-and-run-locally.html#troubleshooting",
+    "href": "modules/02-build-and-deploy/01-clone-and-run-locally.html#troubleshooting",
+    "title": "1. Clone the team repo and run it locally",
+    "section": "Troubleshooting",
+    "text": "Troubleshooting\n\n\n\n\n\n\n\nSymptom\nFix\n\n\n\n\nRepository not found when cloning\nYou have not accepted the invitation, or you are signed in to Git as a different GitHub account\n\n\nCannot connect to the Docker daemon\nStart Docker Desktop and wait until it says it is running\n\n\nport is already allocated for 3306\nAnother MySQL is running on your laptop. Stop it, or change the left-hand port in docker-compose.yml for yourself only and do not commit that change\n\n\nPort 8080 already in use\nAn old run is still going. Stop it in IntelliJ, or close the terminal running it\n\n\nInvalid source release: 17\nYour terminal is using another JDK. Check java -version and set JAVA_HOME to a JDK 17\n\n\ncannot read distributionUrl property\n.mvn/wrapper/maven-wrapper.properties is missing from the repo. Tell your lecturer\n\n\n\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nApp running at localhost:8080, db healthy in Docker, and mvnw verify green. Tell your team, and move on when everyone has reached this point.",
+    "crumbs": [
+      "Build And Deploy",
+      "1. Clone the team repo and run it locally"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html",
+    "href": "modules/02-build-and-deploy/02-test-server.html",
+    "title": "2. Create the test server on AWS",
+    "section": "",
+    "text": "Who: one driver per team, in their own AWS Academy lab; the rest of the team watches and checks each step. Goal: an EC2 instance running Docker and a GitHub runner labelled test, which deploys develop every time a pull request is merged into it.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html#start-the-lab",
+    "href": "modules/02-build-and-deploy/02-test-server.html#start-the-lab",
+    "title": "2. Create the test server on AWS",
+    "section": "2.1 Start the lab",
+    "text": "2.1 Start the lab\n\nSign in to AWS Academy and open the course your lecturer enrolled you in (Cloud Web Application Builder).\nOpen the lab and click Start Lab. Wait until the dot next to AWS turns green.\nClick AWS to open the AWS console. Leave the region as the lab sets it (usually N. Virginia, us-east-1).\nIn the lab window, open AWS Details and click Download PEM. Save labsuser.pem somewhere you can find it.\n\n\n\n\n\n\n\nWarningBudget\n\n\n\nYour lab account has a fixed budget. A t3.medium costs a few cents an hour while it is running. Stop the instance when your team is finished for the week, and never create more than this lesson and the next one ask for.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html#create-a-security-group",
+    "href": "modules/02-build-and-deploy/02-test-server.html#create-a-security-group",
+    "title": "2. Create the test server on AWS",
+    "section": "2.2 Create a security group",
+    "text": "2.2 Create a security group\nEC2 → Security Groups → Create security group:\n\nName: gallery-web\nDescription: Gallery app servers\nVPC: the lab’s default VPC\nInbound rules:\n\nSSH, port 22, source My IP\nHTTP, port 80, source Anywhere-IPv4\n\nOutbound rules: leave the default (All traffic to 0.0.0.0/0). The server needs it to download packages and reach GitHub.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html#launch-the-instance",
+    "href": "modules/02-build-and-deploy/02-test-server.html#launch-the-instance",
+    "title": "2. Create the test server on AWS",
+    "section": "2.3 Launch the instance",
+    "text": "2.3 Launch the instance\nEC2 → Instances → Launch instances:\n\n\n\n\n\n\n\nSetting\nValue\n\n\n\n\nName\ngallery-test\n\n\nImage (AMI)\nUbuntu Server 24.04 LTS, 64-bit (x86)\n\n\nInstance type\nt3.medium. A Maven build plus the app needs about 4 GB of memory; smaller types run out\n\n\nKey pair\nvockey\n\n\nNetwork settings → Edit\nSubnet: a public subnet. Auto-assign public IP: Enable. Security group: Select existing → gallery-web\n\n\nStorage\n20 GiB, gp3\n\n\n\nClick Launch instance, then open the instance and wait until Instance state is Running and Status checks pass. Copy its Public IPv4 address.\n\n\n\n\n\n\nImportant\n\n\n\nIf the instance has no public IPv4 address, or sits in a private subnet, it cannot reach the internet and every later step fails. Terminate it and launch again with the settings above.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html#connect-over-ssh",
+    "href": "modules/02-build-and-deploy/02-test-server.html#connect-over-ssh",
+    "title": "2. Create the test server on AWS",
+    "section": "2.4 Connect over SSH",
+    "text": "2.4 Connect over SSH\n\nWindows (PowerShell)macOS / Linux\n\n\nThe first time only, restrict the key file to your user, or SSH refuses to use it:\nicacls labsuser.pem /inheritance:r /grant:r \"$($env:USERNAME):R\"\nThen connect:\nssh -i labsuser.pem ubuntu@&lt;public-ip&gt;\n\n\nchmod 400 labsuser.pem\nssh -i labsuser.pem ubuntu@&lt;public-ip&gt;\n\n\n\nType yes when asked about the host fingerprint. The prompt changes to ubuntu@ip-…, which means you are on the server. Every command from here to 2.7 runs on the server.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html#check-the-server-can-reach-the-internet",
+    "href": "modules/02-build-and-deploy/02-test-server.html#check-the-server-can-reach-the-internet",
+    "title": "2. Create the test server on AWS",
+    "section": "2.5 Check the server can reach the internet",
+    "text": "2.5 Check the server can reach the internet\ncurl -4 -m 5 -sI https://github.com | head -1\nYou should see HTTP/2 200. If the command hangs and prints nothing, the server has no internet access: check it has a public IP, that its subnet’s route table sends 0.0.0.0/0 to an igw- target, and that gallery-web still allows all outbound traffic.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html#install-docker",
+    "href": "modules/02-build-and-deploy/02-test-server.html#install-docker",
+    "title": "2. Create the test server on AWS",
+    "section": "2.6 Install Docker",
+    "text": "2.6 Install Docker\nsudo apt-get update\nsudo apt-get install -y docker.io\nsudo usermod -aG docker ubuntu\nexit\nexit logs you out so the new group membership applies. Reconnect with the same ssh command, then check:\ndocker run --rm hello-world\nIt should print Hello from Docker! without needing sudo.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html#install-the-github-runner",
+    "href": "modules/02-build-and-deploy/02-test-server.html#install-the-github-runner",
+    "title": "2. Create the test server on AWS",
+    "section": "2.7 Install the GitHub runner",
+    "text": "2.7 Install the GitHub runner\nThe runner is a small program that asks GitHub for jobs and runs them on this server.\nGet a registration token from your lecturer. Only the repo owner can create one, and it expires after one hour, so ask when you reach this step.\nDownload the latest runner:\nmkdir ~/actions-runner && cd ~/actions-runner\nRUNNER_VERSION=$(curl -s https://api.github.com/repos/actions/runner/releases/latest | grep -oP '\"tag_name\": \"v\\K[^\"]+')\ncurl -sL -o runner.tar.gz https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz\ntar xzf runner.tar.gz\nRegister it with your team repo, using the URL from class without .git, and the token:\n./config.sh --url https://github.com/&lt;lecturer&gt;/&lt;team-repo&gt; --token &lt;TOKEN&gt; --name gallery-test --labels test --unattended\nIt ends with √ Settings Saved. The runner gets the labels self-hosted, Linux, X64 and test. The test label is how the deploy workflow finds this server.\nIf it stops with a message about missing .NET dependencies, run sudo ./bin/installdependencies.sh and then the config.sh command again.\nInstall the runner as a service, so it starts again whenever the instance starts:\nsudo ./svc.sh install\nsudo ./svc.sh start\nsudo ./svc.sh status\nThe status shows active (running) and, near the bottom, Listening for Jobs. Your lecturer can also see the runner as Idle in the repo’s runner list.\n\n\n\n\n\n\nWarning\n\n\n\nDo not run ./run.sh. It runs the runner only while your SSH session stays open; the service replaces it.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html#add-the-workflows",
+    "href": "modules/02-build-and-deploy/02-test-server.html#add-the-workflows",
+    "title": "2. Create the test server on AWS",
+    "section": "2.8 Add the workflows",
+    "text": "2.8 Add the workflows\nTwo workflow files tell GitHub what to do. Add them on your laptop, through a pull request like any other change (step 4 covers pull requests in detail).\ngit switch develop\ngit pull\ngit switch -c feature/add-test-pipeline\nCreate .github/workflows/ci.yml. It runs on GitHub’s own machines for every pull request, and a red result blocks the merge:\nname: ci\non:\n  pull_request:\n    branches: [develop, main]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v7\n      - uses: actions/setup-java@v5\n        with:\n          distribution: temurin\n          java-version: '17'\n          cache: maven\n      - run: chmod +x mvnw\n      - name: Download Maven\n        env:\n          MVNW_VERBOSE: \"true\"\n        run: |\n          for i in 1 2 3; do\n            ./mvnw -B -v && exit 0\n            echo \"Download failed, retrying in 15 seconds\"; sleep 15\n          done\n          exit 1\n      - run: ./mvnw -B verify\nThe Download Maven step fetches Maven before the build and retries up to three times, because Maven Central sometimes refuses a download from GitHub’s busy shared machines. MVNW_VERBOSE makes the log show the real error if all three attempts fail.\nCreate .github/workflows/deploy-test.yml. It runs on the server labelled test every time something is merged into develop:\nname: deploy-test\non:\n  push:\n    branches: [develop]\n  workflow_dispatch:\nconcurrency: deploy-test\npermissions:\n  contents: read\n  pull-requests: read\njobs:\n  deploy:\n    runs-on: [self-hosted, test]\n    steps:\n      - uses: actions/checkout@v7\n      - name: Find the pull request\n        env:\n          GH_TOKEN: ${{ github.token }}\n        run: |\n          INFO=$(curl -fsS -H \"Authorization: Bearer $GH_TOKEN\" -H \"Accept: application/vnd.github+json\" \\\n              \"https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/pulls\" \\\n            | python3 -c 'import json,sys; prs=[p for p in json.load(sys.stdin) if p.get(\"merged_at\")]; print(\"PR #%d: %s\" % (prs[0][\"number\"], \" \".join(prs[0][\"title\"].split())) if prs else \"\")' \\\n            || true)\n          [ -n \"$INFO\" ] || INFO=\"develop at ${GITHUB_SHA::7}\"\n          echo \"Footer will show: $INFO\"\n          echo \"BUILD_INFO=$INFO\" &gt;&gt; \"$GITHUB_ENV\"\n      - name: Build the image\n        run: |\n          chmod +x mvnw\n          docker build -t gallery:test .\n      - name: Replace the running container\n        run: |\n          docker rm -f gallery || true\n          docker run -d --name gallery --restart unless-stopped \\\n            -p 80:8080 -e SPRING_PROFILES_ACTIVE=test -e APP_BUILD_INFO=\"$BUILD_INFO\" gallery:test\n      - name: Wait for the app to answer\n        run: |\n          for i in $(seq 1 30); do\n            if curl -fs http://localhost/login &gt; /dev/null; then echo \"App is up\"; exit 0; fi\n            sleep 2\n          done\n          docker logs gallery\n          exit 1\n      - name: Remove old images\n        run: docker image prune -f\nWhat it does, line by line:\n\nruns-on: [self-hosted, test] picks the runner with both labels: your test server.\nFind the pull request asks the GitHub API which merged pull request produced this commit on develop, and saves a label such as PR #9: Add team cards. If someone pushed to develop directly, the label is develop at plus the commit’s short ID. permissions: pull-requests: read lets the workflow’s token make that call.\nchmod +x mvnw makes the Maven wrapper executable, in case it was committed from Windows without that permission.\ndocker build builds the app inside Docker from the repo’s Dockerfile: compile with the JDK, then copy the jar onto a smaller Java runtime image.\ndocker run starts the app with the test profile and maps port 80 on the server to the app’s port 8080. -e APP_BUILD_INFO passes the label to the app, which shows it in the footer of every page. --restart unless-stopped starts the app again whenever the instance restarts.\nThe wait step checks /login, which is public, and prints the app’s log if it never answers.\n\n\n\n\n\n\n\nNoteHow the footer works\n\n\n\nThe skeleton’s application.yml has app.build-info: ${APP_BUILD_INFO:local dev}, so the label comes from the APP_BUILD_INFO environment variable and is local dev on your laptop. BuildInfoAdvice.java adds it to every page, and templates/fragments/footer.html displays it. Pages show it by including the footer fragment:\n&lt;footer th:replace=\"~{fragments/footer :: footer}\"&gt;&lt;/footer&gt;\nAdd that line to every new page you create, just before &lt;/body&gt;.\n\n\nSave both files, then stage them and check what you are about to commit:\ngit add .github/workflows\ngit diff --cached --stat\nBoth files must show lines added, about 25 for ci.yml and 45 for deploy-test.yml. A file that shows 0 was not saved: an empty workflow file fails on every push. Then commit, push and open a pull request into develop:\ngit commit -m \"Add CI and test deployment workflows\"\ngit push -u origin feature/add-test-pipeline\nThe ci check runs on the pull request. When it is green, a teammate approves and merges it. The merge into develop starts the first deploy-test run.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html#check-the-first-deployment",
+    "href": "modules/02-build-and-deploy/02-test-server.html#check-the-first-deployment",
+    "title": "2. Create the test server on AWS",
+    "section": "2.9 Check the first deployment",
+    "text": "2.9 Check the first deployment\n\nOn GitHub, open the Actions tab and click the deploy-test run. The first build takes several minutes while Maven downloads its dependencies. The Find the pull request step prints the label it found.\nWhen it is green, open http://&lt;public-ip&gt;/ in your browser. The footer shows your pull request’s number and title, e.g. PR #5: Add CI and test deployment workflows.\n\n\n\n\n\n\n\nTipCheckpoint\n\n\n\nThe Gallery home page loads from http://&lt;test-ip&gt;/, with your pull request in the footer. Post the test server’s address on your team’s board: from now on, every merge into develop appears there a few minutes later.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
+    ]
+  },
+  {
+    "objectID": "modules/02-build-and-deploy/02-test-server.html#between-lab-sessions",
+    "href": "modules/02-build-and-deploy/02-test-server.html#between-lab-sessions",
+    "title": "2. Create the test server on AWS",
+    "section": "Between lab sessions",
+    "text": "Between lab sessions\n\nWhen the lab ends, the instance may be stopped. When you start the lab again, start the instance if it is not already running. The runner service and the app container start by themselves.\nThe public IP changes each time the instance starts. Check the new address in the console and update it on your board.\nWhile the instance is stopped, deploy jobs wait in the queue as Queued. They run once the instance is back, or fail after 24 hours.",
+    "crumbs": [
+      "Build And Deploy",
+      "2. Create the test server on AWS"
     ]
   }
 ]
