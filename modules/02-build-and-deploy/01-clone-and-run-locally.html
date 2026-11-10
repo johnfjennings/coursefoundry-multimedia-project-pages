@@ -205,13 +205,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/02-test-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Create the test server on AWS</span></a>
+ <span class="menu-text">2. Optional: create a test server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Create the prod server on AWS</span></a>
+ <span class="menu-text">3. Optional: create a prod server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -253,10 +253,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#check-your-tools" id="toc-check-your-tools" class="nav-link active" data-scroll-target="#check-your-tools">1.1 Check your tools</a></li>
   <li><a href="#accept-the-invitation" id="toc-accept-the-invitation" class="nav-link" data-scroll-target="#accept-the-invitation">1.2 Accept the invitation</a></li>
   <li><a href="#clone-the-repo" id="toc-clone-the-repo" class="nav-link" data-scroll-target="#clone-the-repo">1.3 Clone the repo</a></li>
-  <li><a href="#start-the-database" id="toc-start-the-database" class="nav-link" data-scroll-target="#start-the-database">1.4 Start the database</a></li>
+  <li><a href="#start-the-database-and-phpmyadmin" id="toc-start-the-database-and-phpmyadmin" class="nav-link" data-scroll-target="#start-the-database-and-phpmyadmin">1.4 Start the database and phpMyAdmin</a></li>
   <li><a href="#run-the-app" id="toc-run-the-app" class="nav-link" data-scroll-target="#run-the-app">1.5 Run the app</a></li>
   <li><a href="#run-the-build-ci-runs" id="toc-run-the-build-ci-runs" class="nav-link" data-scroll-target="#run-the-build-ci-runs">1.6 Run the build CI runs</a></li>
   <li><a href="#optional-run-the-whole-stack-in-docker" id="toc-optional-run-the-whole-stack-in-docker" class="nav-link" data-scroll-target="#optional-run-the-whole-stack-in-docker">1.7 Optional: run the whole stack in Docker</a></li>
+  <li><a href="#reset-your-database" id="toc-reset-your-database" class="nav-link" data-scroll-target="#reset-your-database">1.8 Reset your database</a></li>
   <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
   </ul>
 </nav>
@@ -289,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Who:</strong> every team member, on their own laptop. <strong>Goal:</strong> the Gallery skeleton running on your laptop, with its MySQL database running in Docker.</p>
+<p><strong>Who:</strong> every team member, on their own laptop. <strong>Goal:</strong> the Gallery app running on your laptop, reading the sample data from a MySQL database in Docker.</p>
 <section id="check-your-tools" class="level2">
 <h2 class="anchored" data-anchor-id="check-your-tools">1.1 Check your tools</h2>
 <p>Open a terminal (PowerShell, Terminal or Git Bash) and run each check:</p>
@@ -310,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>JDK 17</td>
 <td><code>java -version</code></td>
-<td><code>17.x</code></td>
+<td><code>17.x</code>. IntelliJ users can skip this: IntelliJ downloads JDK 17 for you</td>
 </tr>
 <tr class="even">
 <td>Docker</td>
@@ -343,6 +344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>When asked, sign in with GitHub in the browser.</li>
 <li>Click <strong>Clone</strong>, then <strong>Trust Project</strong>.</li>
 <li>Bottom right, click the branch name (<code>main</code>) and choose <strong>origin/develop → Checkout</strong>.</li>
+<li><strong>File → Project Structure → Project</strong>: set <strong>SDK</strong> to a Java 17 JDK. If there is none, open the list → <strong>Download JDK</strong> → version 17, Eclipse Temurin.</li>
 </ol>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -355,15 +357,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>You work from <code>develop</code>, never <code>main</code>. <code>main</code> only changes at a release (step 6).</p>
 </section>
-<section id="start-the-database" class="level2">
-<h2 class="anchored" data-anchor-id="start-the-database">1.4 Start the database</h2>
+<section id="start-the-database-and-phpmyadmin" class="level2">
+<h2 class="anchored" data-anchor-id="start-the-database-and-phpmyadmin">1.4 Start the database and phpMyAdmin</h2>
+<p>The repo’s <code>docker-compose.yml</code> defines three services:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Service</th>
+<th>What it is</th>
+<th>Address on your laptop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>db</code></td>
+<td>MySQL 8.4, holding the <code>idm3project2024</code> database</td>
+<td><code>localhost:3306</code></td>
+</tr>
+<tr class="even">
+<td><code>phpmyadmin</code></td>
+<td>A web page for browsing and editing the database</td>
+<td><a href="http://localhost:8081" class="uri">http://localhost:8081</a></td>
+</tr>
+<tr class="odd">
+<td><code>app</code></td>
+<td>The Gallery app, built in Docker</td>
+<td><a href="http://localhost:8080" class="uri">http://localhost:8080</a></td>
+</tr>
+</tbody>
+</table>
+<p>For day-to-day work you start only <code>db</code> and <code>phpmyadmin</code>, and run the app itself from IntelliJ or Maven (1.5).</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">IntelliJ</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Command line</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Open <code>docker-compose.yml</code> and click the green ▶ in the gutter beside the <code>db:</code> service, then beside <code>phpmyadmin:</code>. Both appear in the <strong>Services</strong> tool window (Alt+8, or ⌘8 on a Mac). Wait until <code>db</code> shows <strong>healthy</strong>.</p>
+<p>Do not start <code>app:</code> here: you run the app from IntelliJ in the next step, and both use port 8080.</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>From the repo folder:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> db</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The first run downloads the MySQL image, which takes a minute. Then check it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose ps</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>db</code> service should show <code>running (healthy)</code>. Confirm you can reach the <code>gallery</code> database:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose exec db mysql <span class="at">-ugallery</span> <span class="at">-pgallerypass</span> <span class="at">-e</span> <span class="st">"SHOW DATABASES;"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The list should include <code>gallery</code>. The warning about using a password on the command line is expected.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> db phpmyadmin</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose ps</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Wait until <code>db</code> shows <code>healthy</code>; run <code>docker compose ps</code> again if it says <code>starting</code>.</p>
+</div>
+</div>
+</div>
+<p>The first run downloads the MySQL and phpMyAdmin images, which takes a minute or two. The first time <code>db</code> starts, it also loads the sample data from <code>idm3project2024.sql</code>: users, projects and showcases.</p>
+<p><strong>Check the data is there.</strong> Open <a href="http://localhost:8081" class="uri">http://localhost:8081</a>. If phpMyAdmin shows a login form, sign in as the app’s database user:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Username / password</td>
+<td><code>gallery</code> / <code>gallerypass</code></td>
+</tr>
+<tr class="even">
+<td>Database</td>
+<td><code>idm3project2024</code></td>
+</tr>
+<tr class="odd">
+<td>Root user, if you ever need it</td>
+<td><code>root</code> / <code>rootpass</code></td>
+</tr>
+</tbody>
+</table>
+<p>On the left, open <code>idm3project2024</code>. It has four tables: <code>project</code>, <code>showcase</code>, <code>showcaseproject</code> and <code>user</code>. Click <code>user</code> to see the sample accounts you will log in with.</p>
+<p>From the command line, the same check is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose exec db mysql <span class="at">-ugallery</span> <span class="at">-pgallerypass</span> idm3project2024 <span class="at">-e</span> <span class="st">"SHOW TABLES;"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The warning about using a password on the command line is expected.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -374,42 +440,103 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The app does not use the database yet. It connects from week 3, when persistence is added. Starting it now means you meet any Docker problems this week rather than mid-sprint.</p>
+<p>These passwords are in <code>docker-compose.yml</code>, in Git, so they are for your laptop only. The test and prod servers use their own passwords, stored as secrets in your team repo. phpMyAdmin is never deployed to test or prod.</p>
 </div>
 </div>
 </section>
 <section id="run-the-app" class="level2">
 <h2 class="anchored" data-anchor-id="run-the-app">1.5 Run the app</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">IntelliJ</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Command line</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">IntelliJ</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Command line</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p>Open <code>src/main/java/ie/tus/gallery/GalleryApplication.java</code> and click the green ▶ next to <code>main</code>.</p>
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>Open <code>src/main/java/idm3/project/gallery/application/GalleryApplication.java</code> and click the green ▶ beside the class → <strong>Run ‘GalleryApplication’</strong>.</p>
+<p><code>dev</code> is the default profile. Set it explicitly anyway, so you know where the setting lives: <strong>Run → Edit Configurations</strong> → <code>GalleryApplication</code> → <strong>Active profiles</strong>: <code>dev</code> → <strong>OK</strong>.</p>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./mvnw</span> spring-boot:run</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./mvnw</span> spring-boot:run</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>In PowerShell, use <code>.\mvnw.cmd spring-boot:run</code>. On macOS or Linux, if you get <code>Permission denied</code>, run <code>chmod +x mvnw</code> once.</p>
 </div>
 </div>
 </div>
-<p>Open <a href="http://localhost:8080" class="uri">http://localhost:8080</a>. Check:</p>
+<p>Open <a href="http://localhost:8080" class="uri">http://localhost:8080</a>. It redirects to the gallery home page at <code>/MainGallery/HomePage</code>, which lists the sample projects and showcases. Check:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">The home page loads</label></li>
-<li><label><input type="checkbox"><strong>Team</strong> opens the team page</label></li>
-<li><label><input type="checkbox"><strong>Login</strong> with <code>student1</code> / <code>Password123!</code> reaches the dashboard</label></li>
+<li><label><input type="checkbox">The home page shows projects and showcases from the sample data</label></li>
+<li><label><input type="checkbox">The footer reads <code>local dev</code>. On the servers it shows the pull request or release instead (steps 5 and 7)</label></li>
+<li><label><input type="checkbox">You can sign in at <a href="http://localhost:8080/MainGallery/Login" class="uri">http://localhost:8080/MainGallery/Login</a> with a test account below</label></li>
 </ul>
-<p>These are dev-only accounts; they must never reach prod (step 7 explains).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Username</th>
+<th>Password</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Student</td>
+<td><code>TRYAN</code></td>
+<td><code>pass123</code></td>
+</tr>
+<tr class="even">
+<td>Student</td>
+<td><code>MSith</code></td>
+<td><code>123pass</code></td>
+</tr>
+<tr class="odd">
+<td>Administrator</td>
+<td><code>tsmith</code></td>
+<td><code>pass123</code></td>
+</tr>
+<tr class="even">
+<td>Administrator</td>
+<td><code>EBourke</code></td>
+<td><code>Bourke123</code></td>
+</tr>
+<tr class="odd">
+<td>Employer</td>
+<td><code>PCbus</code></td>
+<td><code>PC123</code></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A 404 after signing in means it worked
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A successful login redirects to <code>/dashboard</code>, which your team has not built yet, so you see a 404 page. A wrong password keeps you on the login page with an error.</p>
+</div>
+</div>
+<p>These accounts come from the sample data. Their passwords are stored as plain text, which is acceptable only on your laptop: replacing them with real, hashed passwords is part of your team’s work in weeks 2 to 4. You can also create your own student account at <a href="http://localhost:8080/MainGallery/Register" class="uri">http://localhost:8080/MainGallery/Register</a>.</p>
 <p>Stop the app with <strong>Ctrl+C</strong>, or the red ■ in IntelliJ.</p>
 </section>
 <section id="run-the-build-ci-runs" class="level2">
 <h2 class="anchored" data-anchor-id="run-the-build-ci-runs">1.6 Run the build CI runs</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./mvnw</span> verify</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>(<code>.\mvnw.cmd verify</code> in PowerShell.) It compiles the app, runs its tests and packages it. If it ends with <code>BUILD SUCCESS</code>, your laptop builds the app exactly as the pipeline will.</p>
+<p>Keep <code>db</code> running: the test starts the whole app, including its database connection.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./mvnw</span> verify</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>(<code>.\mvnw.cmd verify</code> in PowerShell. In IntelliJ, open the <strong>Maven</strong> tool window → <strong>Lifecycle</strong> → double-click <strong>verify</strong>.)</p>
+<p>It compiles the app, runs its tests and packages it. If it ends with <code>BUILD SUCCESS</code>, your laptop builds the app as the pipeline will. CI starts its own <strong>empty</strong> MySQL for this, so never write a test that depends on the sample data.</p>
 </section>
 <section id="optional-run-the-whole-stack-in-docker" class="level2">
 <h2 class="anchored" data-anchor-id="optional-run-the-whole-stack-in-docker">1.7 Optional: run the whole stack in Docker</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">--build</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This builds the app’s Docker image from the <code>Dockerfile</code> and runs it next to MySQL, which is close to what the EC2 servers will do. Open <a href="http://localhost:8080" class="uri">http://localhost:8080</a>, then stop it with <strong>Ctrl+C</strong> and run <code>docker compose down</code>.</p>
+<p>Stop the app you started in 1.5 first, because this uses port 8080 too. Then:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">--build</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This builds the app’s Docker image from the <code>Dockerfile</code> and runs it next to MySQL. It is close to what the test and prod servers do. Open <a href="http://localhost:8080" class="uri">http://localhost:8080</a>, then stop it with <strong>Ctrl+C</strong>.</p>
+<p>If the build fails at <code>./mvnw</code> with exit code 127, <code>mvnw</code> was checked out with Windows line endings. Your repo needs a <code>.gitattributes</code> file containing <code>/mvnw text eol=lf</code>. Once it has one, run <code>rm mvnw</code> and then <code>git checkout -- mvnw</code>, and build again.</p>
+</section>
+<section id="reset-your-database" class="level2">
+<h2 class="anchored" data-anchor-id="reset-your-database">1.8 Reset your database</h2>
+<p>To throw away your local data and reload the sample data, for example after a teammate changes <code>idm3project2024.sql</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down <span class="at">-v</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> db phpmyadmin</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>-v</code> deletes the database volume, so everything you added locally is gone.</p>
 </section>
 <section id="troubleshooting" class="level2">
 <h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
@@ -434,20 +561,36 @@ Note
 <td>Start Docker Desktop and wait until it says it is running</td>
 </tr>
 <tr class="odd">
-<td><code>port is already allocated</code> for 3306</td>
-<td>Another MySQL is running on your laptop. Stop it, or change the left-hand port in <code>docker-compose.yml</code> for yourself only and do not commit that change</td>
+<td>Port 3306 or 8081 already in use</td>
+<td>Another MySQL or phpMyAdmin is running, often a container from another project. Run <code>docker ps</code>, then <code>docker stop &lt;name&gt;</code></td>
 </tr>
 <tr class="even">
 <td>Port 8080 already in use</td>
-<td>An old run is still going. Stop it in IntelliJ, or close the terminal running it</td>
+<td>An old run of the app is still going. Stop it in IntelliJ, or close the terminal running it</td>
 </tr>
 <tr class="odd">
-<td><code>Invalid source release: 17</code></td>
-<td>Your terminal is using another JDK. Check <code>java -version</code> and set <code>JAVA_HOME</code> to a JDK 17</td>
+<td><code>Communications link failure</code>, or <code>HHH000342: Could not obtain connection</code> followed by a <code>NullPointerException</code></td>
+<td><code>db</code> is not running. Start it (1.4), wait for <code>healthy</code>, then start the app again</td>
 </tr>
 <tr class="even">
-<td><code>cannot read distributionUrl property</code></td>
-<td><code>.mvn/wrapper/maven-wrapper.properties</code> is missing from the repo. Tell your lecturer</td>
+<td><code>Access denied for user 'gallery'</code></td>
+<td>The database login in <code>application.properties</code> no longer matches <code>docker-compose.yml</code>. Both should be <code>gallery</code> / <code>gallerypass</code></td>
+</tr>
+<tr class="odd">
+<td>The home page is empty, or the test logins fail</td>
+<td>The sample data did not load, usually because the database volume already existed. Reset it (1.8)</td>
+</tr>
+<tr class="even">
+<td><code>Invalid source release: 17</code></td>
+<td>Your terminal or IntelliJ is using another JDK. Check <code>java -version</code>, or the SDK in <strong>Project Structure</strong></td>
+</tr>
+<tr class="odd">
+<td><code>maven-wrapper.properties: No such file or directory</code></td>
+<td>The hidden <code>.mvn</code> folder is missing, usually because the project was copied rather than cloned. Clone it again</td>
+</tr>
+<tr class="even">
+<td><code>Unable to find a @SpringBootConfiguration</code> in a test</td>
+<td>The test is missing <code>@SpringBootTest(classes = GalleryApplication.class)</code></td>
 </tr>
 </tbody>
 </table>
@@ -461,7 +604,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>App running at <code>localhost:8080</code>, <code>db</code> healthy in Docker, and <code>mvnw verify</code> green. Tell your team, and move on when everyone has reached this point.</p>
+<p><code>db</code> is healthy, the app shows the sample projects at <code>localhost:8080</code> with <code>local dev</code> in its footer, a test login works, and <code>mvnw verify</code> is green. Tell your team, and move on when everyone has reached this point.</p>
 </div>
 </div>
 
@@ -876,8 +1019,8 @@ Note
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../modules/02-build-and-deploy/02-test-server.html" class="pagination-link" aria-label="2. Create the test server on AWS">
-        <span class="nav-page-text">2. Create the test server on AWS</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../modules/02-build-and-deploy/02-test-server.html" class="pagination-link" aria-label="2. Optional: create a test server on AWS">
+        <span class="nav-page-text">2. Optional: create a test server on AWS</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

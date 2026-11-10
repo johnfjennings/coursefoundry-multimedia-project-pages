@@ -205,13 +205,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/02-test-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Create the test server on AWS</span></a>
+ <span class="menu-text">2. Optional: create a test server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Create the prod server on AWS</span></a>
+ <span class="menu-text">3. Optional: create a prod server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -333,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="review-and-merge">6.3 Review and merge</h2>
 <p>The reviewer checks that:</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><code>ci</code> is green</label></li>
+<li><label><input type="checkbox"><code>ci</code> is green. GitHub would let you merge a red release, so check it yourself</label></li>
 <li><label><input type="checkbox">The test server is running the same commit as the head of <code>develop</code>: compare the latest <strong>deploy-test</strong> run’s commit with the top commit in the pull request’s <strong>Commits</strong> tab</label></li>
 <li><label><input type="checkbox">Every change in <strong>Files changed</strong> belongs in this release</label></li>
 </ul>

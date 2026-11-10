@@ -8,7 +8,7 @@
 
 <meta name="author" content="Mr.&nbsp;John Jennings">
 
-<title>2. Create the test server on AWS – IDM3 - Multimedia Project</title>
+<title>2. Optional: create a test server on AWS – IDM3 - Multimedia Project</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="2. Create the test server on AWS – IDM3 - Multimedia Project">
+<meta property="og:title" content="2. Optional: create a test server on AWS – IDM3 - Multimedia Project">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="IDM3 - Multimedia Project">
 </head>
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/00-overview.html">Build And Deploy</a></li><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/02-test-server.html">2. Create the test server on AWS</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/00-overview.html">Build And Deploy</a></li><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/02-test-server.html">2. Optional: create a test server on AWS</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -205,13 +205,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/02-test-server.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">2. Create the test server on AWS</span></a>
+ <span class="menu-text">2. Optional: create a test server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Create the prod server on AWS</span></a>
+ <span class="menu-text">3. Optional: create a prod server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -250,14 +250,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#start-the-lab" id="toc-start-the-lab" class="nav-link active" data-scroll-target="#start-the-lab">2.1 Start the lab</a></li>
+  <li><a href="#make-a-practice-copy-of-the-repo" id="toc-make-a-practice-copy-of-the-repo" class="nav-link active" data-scroll-target="#make-a-practice-copy-of-the-repo">2.0 Make a practice copy of the repo</a></li>
+  <li><a href="#start-the-lab" id="toc-start-the-lab" class="nav-link" data-scroll-target="#start-the-lab">2.1 Start the lab</a></li>
   <li><a href="#create-a-security-group" id="toc-create-a-security-group" class="nav-link" data-scroll-target="#create-a-security-group">2.2 Create a security group</a></li>
   <li><a href="#launch-the-instance" id="toc-launch-the-instance" class="nav-link" data-scroll-target="#launch-the-instance">2.3 Launch the instance</a></li>
   <li><a href="#connect-over-ssh" id="toc-connect-over-ssh" class="nav-link" data-scroll-target="#connect-over-ssh">2.4 Connect over SSH</a></li>
   <li><a href="#check-the-server-can-reach-the-internet" id="toc-check-the-server-can-reach-the-internet" class="nav-link" data-scroll-target="#check-the-server-can-reach-the-internet">2.5 Check the server can reach the internet</a></li>
   <li><a href="#install-docker" id="toc-install-docker" class="nav-link" data-scroll-target="#install-docker">2.6 Install Docker</a></li>
   <li><a href="#install-the-github-runner" id="toc-install-the-github-runner" class="nav-link" data-scroll-target="#install-the-github-runner">2.7 Install the GitHub runner</a></li>
-  <li><a href="#add-the-workflows" id="toc-add-the-workflows" class="nav-link" data-scroll-target="#add-the-workflows">2.8 Add the workflows</a></li>
+  <li><a href="#the-workflows" id="toc-the-workflows" class="nav-link" data-scroll-target="#the-workflows">2.8 The workflows</a></li>
   <li><a href="#check-the-first-deployment" id="toc-check-the-first-deployment" class="nav-link" data-scroll-target="#check-the-first-deployment">2.9 Check the first deployment</a></li>
   <li><a href="#between-lab-sessions" id="toc-between-lab-sessions" class="nav-link" data-scroll-target="#between-lab-sessions">Between lab sessions</a></li>
   </ul>
@@ -266,9 +267,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/00-overview.html">Build And Deploy</a></li><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/02-test-server.html">2. Create the test server on AWS</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/00-overview.html">Build And Deploy</a></li><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/02-test-server.html">2. Optional: create a test server on AWS</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">2. Create the test server on AWS</h1>
+<h1 class="title">2. Optional: create a test server on AWS</h1>
 </div>
 
 
@@ -291,7 +292,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Who:</strong> one driver per team, in their own AWS Academy lab; the rest of the team watches and checks each step. <strong>Goal:</strong> an EC2 instance running Docker and a GitHub runner labelled <code>test</code>, which deploys <code>develop</code> every time a pull request is merged into it.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>This step is optional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your lecturer has already built your team’s test server, and your team’s merges deploy there without this step. To find your team’s site, see <a href="../../modules/02-build-and-deploy/00-overview.html#finding-your-teams-sites">Finding your team’s sites</a>.</p>
+<p>Do this step if you want to learn how the server behind it is set up. You build your own server for your own <strong>practice copy</strong> of the repo, so nothing you do here affects your team.</p>
+</div>
+</div>
+<p><strong>Who:</strong> you, on your own, in your own AWS Academy lab. <strong>Goal:</strong> an EC2 instance running Docker, MySQL and a GitHub runner labelled <code>test</code>, which deploys the <code>develop</code> branch of your practice repo.</p>
+<section id="make-a-practice-copy-of-the-repo" class="level2">
+<h2 class="anchored" data-anchor-id="make-a-practice-copy-of-the-repo">2.0 Make a practice copy of the repo</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Never register a runner in your <strong>team</strong> repo. Your lecturer’s server already serves it, and a second runner with the same label would take some of your team’s deployments.</p>
+</div>
+</div>
+<ol type="1">
+<li><p>On GitHub, click <strong>+ → New repository</strong>. Name it <code>gallery-practice</code>, make it <strong>Private</strong>, and leave <em>Add a README</em>, <em>.gitignore</em> and <em>license</em> unset, so it is empty. Click <strong>Create repository</strong>.</p></li>
+<li><p>On your laptop, in a folder <strong>outside</strong> your team clone, copy every branch and tag of the team repo into it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--bare</span> https://github.com/<span class="op">&lt;</span>lecturer<span class="op">&gt;</span>/<span class="op">&lt;</span>team-repo<span class="op">&gt;</span>.git gallery-mirror</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> gallery-mirror</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--mirror</span> https://github.com/<span class="op">&lt;</span>you<span class="op">&gt;</span>/gallery-practice.git</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then delete the <code>gallery-mirror</code> folder. To work on the practice repo later, clone it like any other: <code>git clone https://github.com/&lt;you&gt;/gallery-practice.git</code>.</p></li>
+<li><p>In <code>gallery-practice</code> on GitHub, open <strong>Settings → Secrets and variables → Actions → New repository secret</strong> and add two secrets, <code>TEST_DB_PASSWORD</code> and <code>TEST_DB_ROOT_PASSWORD</code>. Choose your own values, <strong>letters and digits only</strong>.</p></li>
+</ol>
+<p>The copy includes the team’s workflows, so a <strong>deploy-test</strong> run may appear straight away as <em>Queued</em>. It waits for your runner, and starts once you finish 2.7.</p>
+<p>The practice repo is yours: you are its owner, so you can register runners and set secrets yourself. Its <code>ci</code> runs use your own account’s free Actions minutes.</p>
+</section>
 <section id="start-the-lab" class="level2">
 <h2 class="anchored" data-anchor-id="start-the-lab">2.1 Start the lab</h2>
 <ol type="1">
@@ -328,6 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Outbound rules: leave the default (<strong>All traffic</strong> to <code>0.0.0.0/0</code>). The server needs it to download packages and reach GitHub.</li>
 </ul>
+<p>Do <strong>not</strong> open port 3306. The database runs on the same server as the app and is never reachable from outside it.</p>
 </section>
 <section id="launch-the-instance" class="level2">
 <h2 class="anchored" data-anchor-id="launch-the-instance">2.3 Launch the instance</h2>
@@ -354,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td>Instance type</td>
-<td><code>t3.medium</code>. A Maven build plus the app needs about 4 GB of memory; smaller types run out</td>
+<td><code>t3.medium</code>. A Maven build, the app and MySQL need about 4 GB of memory; smaller types run out</td>
 </tr>
 <tr class="even">
 <td>Key pair</td>
@@ -392,13 +436,13 @@ Important
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>The first time only, restrict the key file to your user, or SSH refuses to use it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>icacls labsuser<span class="op">.</span><span class="fu">pem</span> <span class="op">/</span>inheritance<span class="op">:</span>r <span class="op">/</span>grant<span class="op">:</span>r <span class="st">"</span><span class="op">$(</span><span class="va">$env</span><span class="op">:</span><span class="va">USERNAME</span><span class="op">)</span><span class="st">:R"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>icacls labsuser<span class="op">.</span><span class="fu">pem</span> <span class="op">/</span>inheritance<span class="op">:</span>r <span class="op">/</span>grant<span class="op">:</span>r <span class="st">"</span><span class="op">$(</span><span class="va">$env</span><span class="op">:</span><span class="va">USERNAME</span><span class="op">)</span><span class="st">:R"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Then connect:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ssh <span class="op">-</span>i labsuser<span class="op">.</span><span class="fu">pem</span> ubuntu@<span class="op">&lt;</span>public-ip<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ssh <span class="op">-</span>i labsuser<span class="op">.</span><span class="fu">pem</span> ubuntu@<span class="op">&lt;</span>public-ip<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 400 labsuser.pem</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-i</span> labsuser.pem ubuntu@<span class="op">&lt;</span>public-ip<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 400 labsuser.pem</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-i</span> labsuser.pem ubuntu@<span class="op">&lt;</span>public-ip<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -406,37 +450,51 @@ Important
 </section>
 <section id="check-the-server-can-reach-the-internet" class="level2">
 <h2 class="anchored" data-anchor-id="check-the-server-can-reach-the-internet">2.5 Check the server can reach the internet</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-4</span> <span class="at">-m</span> 5 <span class="at">-sI</span> https://github.com <span class="kw">|</span> <span class="fu">head</span> <span class="at">-1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-4</span> <span class="at">-m</span> 5 <span class="at">-sI</span> https://github.com <span class="kw">|</span> <span class="fu">head</span> <span class="at">-1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You should see <code>HTTP/2 200</code>. If the command hangs and prints nothing, the server has no internet access: check it has a public IP, that its subnet’s route table sends <code>0.0.0.0/0</code> to an <code>igw-</code> target, and that <code>gallery-web</code> still allows all outbound traffic.</p>
 </section>
 <section id="install-docker" class="level2">
 <h2 class="anchored" data-anchor-id="install-docker">2.6 Install Docker</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> docker.io</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker ubuntu</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> docker.io</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker ubuntu</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>exit</code> logs you out so the new group membership applies. Reconnect with the same <code>ssh</code> command, then check:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> hello-world</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> hello-world</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>It should print <code>Hello from Docker!</code> without needing <code>sudo</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Database passwords
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You do not create these on the server. They are the two <strong>repository secrets</strong> you added in 2.0, <code>TEST_DB_PASSWORD</code> and <code>TEST_DB_ROOT_PASSWORD</code>. The first deployment writes them to <code>~/gallery/db.env</code> on this server (step 2.8 shows how), and every later deployment reads them from there. Secrets never go into Git, and GitHub hides them if they appear in a log.</p>
+<p>If you skipped adding them, do it now. If this server already has a <code>~/gallery/db.env</code> from earlier, the deployment keeps it.</p>
+</div>
+</div>
 </section>
 <section id="install-the-github-runner" class="level2">
 <h2 class="anchored" data-anchor-id="install-the-github-runner">2.7 Install the GitHub runner</h2>
 <p>The runner is a small program that asks GitHub for jobs and runs them on this server.</p>
-<p><strong>Get a registration token from your lecturer.</strong> Only the repo owner can create one, and it expires after one hour, so ask when you reach this step.</p>
+<p><strong>Get a registration token from your practice repo.</strong> On GitHub, open <code>gallery-practice</code> → <strong>Settings → Actions → Runners → New self-hosted runner</strong>, choose <strong>Linux</strong>, and copy the token from the <code>./config.sh</code> line in the <em>Configure</em> block. It expires after one hour.</p>
 <p>Download the latest runner:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/actions-runner <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> ~/actions-runner</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">RUNNER_VERSION</span><span class="op">=</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-s</span> https://api.github.com/repos/actions/runner/releases/latest <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-oP</span> <span class="st">'"tag_name": "v\K[^"]+'</span><span class="va">)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-sL</span> <span class="at">-o</span> runner.tar.gz https://github.com/actions/runner/releases/download/v<span class="va">${RUNNER_VERSION}</span>/actions-runner-linux-x64-<span class="va">${RUNNER_VERSION}</span>.tar.gz</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xzf runner.tar.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Register it with your team repo, using the URL from class without <code>.git</code>, and the token:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./config.sh</span> <span class="at">--url</span> https://github.com/<span class="op">&lt;</span>lecturer<span class="op">&gt;</span>/<span class="op">&lt;</span>team-repo<span class="op">&gt;</span> --token <span class="op">&lt;</span>TOKEN<span class="op">&gt;</span> --name gallery-test <span class="at">--labels</span> test <span class="at">--unattended</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/actions-runner <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> ~/actions-runner</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="va">RUNNER_VERSION</span><span class="op">=</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-s</span> https://api.github.com/repos/actions/runner/releases/latest <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-oP</span> <span class="st">'"tag_name": "v\K[^"]+'</span><span class="va">)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-sL</span> <span class="at">-o</span> runner.tar.gz https://github.com/actions/runner/releases/download/v<span class="va">${RUNNER_VERSION}</span>/actions-runner-linux-x64-<span class="va">${RUNNER_VERSION}</span>.tar.gz</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xzf runner.tar.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Register it with your practice repo, using its URL without <code>.git</code>, and the token:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./config.sh</span> <span class="at">--url</span> https://github.com/<span class="op">&lt;</span>you<span class="op">&gt;</span>/gallery-practice <span class="at">--token</span> <span class="op">&lt;</span>TOKEN<span class="op">&gt;</span> --name gallery-test <span class="at">--labels</span> test <span class="at">--unattended</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>It ends with <code>√ Settings Saved.</code> The runner gets the labels <code>self-hosted</code>, <code>Linux</code>, <code>X64</code> and <code>test</code>. The <code>test</code> label is how the deploy workflow finds this server.</p>
 <p>If it stops with a message about missing .NET dependencies, run <code>sudo ./bin/installdependencies.sh</code> and then the <code>config.sh</code> command again.</p>
 <p>Install the runner as a service, so it starts again whenever the instance starts:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./svc.sh install</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./svc.sh start</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./svc.sh status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The status shows <code>active (running)</code> and, near the bottom, <code>Listening for Jobs</code>. Your lecturer can also see the runner as <strong>Idle</strong> in the repo’s runner list.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./svc.sh install</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./svc.sh start</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./svc.sh status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The status shows <code>active (running)</code> and, near the bottom, <code>Listening for Jobs</code>. Your practice repo’s runner list (<strong>Settings → Actions → Runners</strong>) shows it as <strong>Idle</strong>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -451,13 +509,10 @@ Warning
 </div>
 </div>
 </section>
-<section id="add-the-workflows" class="level2">
-<h2 class="anchored" data-anchor-id="add-the-workflows">2.8 Add the workflows</h2>
-<p>Two workflow files tell GitHub what to do. Add them on your laptop, through a pull request like any other change (step 4 covers pull requests in detail).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch develop</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> feature/add-test-pipeline</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Create <code>.github/workflows/ci.yml</code>. It runs on GitHub’s own machines for every pull request, and a red result blocks the merge:</p>
+<section id="the-workflows" class="level2">
+<h2 class="anchored" data-anchor-id="the-workflows">2.8 The workflows</h2>
+<p>Two workflow files in <code>.github/workflows</code> tell GitHub what to do. Your practice repo already contains both, copied from your team repo, so there is nothing to add. Read them and the explanations, so you know what your server is about to do.</p>
+<p><code>.github/workflows/ci.yml</code> runs on GitHub’s own machines for every pull request, and puts a red cross on the pull request if the build or a test fails. GitHub still lets you merge it, so the team rule is never to merge while <code>ci</code> is red (step 4.7):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> ci</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
@@ -465,26 +520,39 @@ Warning
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build</span><span class="kw">:</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v7</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/setup-java@v5</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">distribution</span><span class="kw">:</span><span class="at"> temurin</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">java-version</span><span class="kw">:</span><span class="at"> </span><span class="st">'17'</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> maven</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> chmod +x mvnw</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Download Maven</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">env</span><span class="kw">:</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">MVNW_VERBOSE</span><span class="kw">:</span><span class="at"> </span><span class="st">"true"</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>          for i in 1 2 3; do</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>            ./mvnw -B -v &amp;&amp; exit 0</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>            echo "Download failed, retrying in 15 seconds"; sleep 15</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>          done</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>          exit 1</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> ./mvnw -B verify</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <strong>Download Maven</strong> step fetches Maven before the build and retries up to three times, because Maven Central sometimes refuses a download from GitHub’s busy shared machines. <code>MVNW_VERBOSE</code> makes the log show the real error if all three attempts fail.</p>
-<p>Create <code>.github/workflows/deploy-test.yml</code>. It runs on the server labelled <code>test</code> every time something is merged into <code>develop</code>:</p>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">db</span><span class="kw">:</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">image</span><span class="kw">:</span><span class="at"> mysql:8.4</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">MYSQL_ROOT_PASSWORD</span><span class="kw">:</span><span class="at"> rootpass</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">MYSQL_DATABASE</span><span class="kw">:</span><span class="at"> idm3project2024</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">MYSQL_USER</span><span class="kw">:</span><span class="at"> gallery</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">MYSQL_PASSWORD</span><span class="kw">:</span><span class="at"> gallerypass</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">ports</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"3306:3306"</span><span class="kw">]</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">options</span><span class="kw">:</span><span class="at"> --health-cmd="mysqladmin ping -h localhost" --health-interval=5s --health-retries=20</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v7</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/setup-java@v5</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">distribution</span><span class="kw">:</span><span class="at"> temurin</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">java-version</span><span class="kw">:</span><span class="at"> </span><span class="st">'17'</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> maven</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> chmod +x mvnw</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Download Maven</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">MVNW_VERBOSE</span><span class="kw">:</span><span class="at"> </span><span class="st">"true"</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>          for i in 1 2 3; do</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>            ./mvnw -B -v &amp;&amp; exit 0</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>            echo "Download failed, retrying in 15 seconds"; sleep 15</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>          done</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>          exit 1</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> ./mvnw -B verify</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>services: db</code> starts an empty MySQL next to the build, with the same names and passwords as your laptop’s <code>docker-compose.yml</code>, on <code>localhost:3306</code>. The app’s test starts the whole application, including its database connection, so it needs a database to connect to. These are throwaway passwords for a database that exists only for the length of the build.</li>
+<li>The <strong>Download Maven</strong> step fetches Maven before the build and retries up to three times, because Maven Central sometimes refuses a download from GitHub’s busy shared machines. <code>MVNW_VERBOSE</code> makes the log show the real error if all three attempts fail.</li>
+</ul>
+<p><code>.github/workflows/deploy-test.yml</code> runs on the server labelled <code>test</code> every time something is merged into <code>develop</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> deploy-test</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
@@ -514,30 +582,110 @@ Warning
 <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
 <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>          chmod +x mvnw</span>
 <span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>          docker build -t gallery:test .</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Replace the running container</span></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>          docker rm -f gallery || true</span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>          docker run -d --name gallery --restart unless-stopped \</span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>            -p 80:8080 -e SPRING_PROFILES_ACTIVE=test -e APP_BUILD_INFO="$BUILD_INFO" gallery:test</span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Wait for the app to answer</span></span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>          for i in $(seq 1 30); do</span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>            if curl -fs http://localhost/login &gt; /dev/null; then echo "App is up"; exit 0; fi</span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>            sleep 2</span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>          done</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>          docker logs gallery</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>          exit 1</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Remove old images</span></span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> docker image prune -f</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>What it does, line by line:</p>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Write db.env from the repository secrets</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">DB_PASSWORD</span><span class="kw">:</span><span class="at"> ${{ secrets.TEST_DB_PASSWORD }}</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">DB_ROOT_PASSWORD</span><span class="kw">:</span><span class="at"> ${{ secrets.TEST_DB_ROOT_PASSWORD }}</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>          if [ -f ~/gallery/db.env ]; then</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>            # The database keeps the passwords it was first created with, so an existing file wins.</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>            if [ -n "$DB_PASSWORD" ] &amp;&amp; ! grep -qxF "MYSQL_PASSWORD=$DB_PASSWORD" ~/gallery/db.env; then</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>              echo "::warning::~/gallery/db.env on the server does not match the TEST_DB_PASSWORD secret. The server's file is used. Reset the test database to switch (course step 5.4)."</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>            fi</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>            echo "Using the existing ~/gallery/db.env"</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>            exit 0</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>          fi</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>          if [ -z "$DB_PASSWORD" ] || [ -z "$DB_ROOT_PASSWORD" ]; then</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>            echo "::error::Add the TEST_DB_PASSWORD and TEST_DB_ROOT_PASSWORD repository secrets (course step 2.6)."</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>            exit 1</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>          fi</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>          case "$DB_PASSWORD$DB_ROOT_PASSWORD" in</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>            *[!A-Za-z0-9]*) echo "::error::The database passwords must be letters and digits only."; exit 1 ;;</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>          esac</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>          mkdir -p ~/gallery</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>          umask 077</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>          printf 'MYSQL_DATABASE=idm3project2024\nMYSQL_USER=gallery\nMYSQL_PASSWORD=%s\nMYSQL_ROOT_PASSWORD=%s\n' \</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>            "$DB_PASSWORD" "$DB_ROOT_PASSWORD" &gt; ~/gallery/db.env</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>          echo "Created ~/gallery/db.env"</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Start the database</span></span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>          docker network create gallery 2&gt;/dev/null || true</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>          if [ -z "$(docker ps -q -f name=^gallery-db$)" ]; then</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>            mkdir -p ~/gallery/initdb</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>            cp idm3project2024.sql ~/gallery/initdb/01-idm3project.sql</span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>            docker rm -f gallery-db 2&gt;/dev/null || true</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>            docker run -d --name gallery-db --network gallery --restart unless-stopped \</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>              --env-file ~/gallery/db.env \</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>              -v gallery-dbdata:/var/lib/mysql \</span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>              -v ~/gallery/initdb:/docker-entrypoint-initdb.d:ro \</span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>              --health-cmd "mysqladmin ping -h localhost" --health-interval 5s \</span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>              mysql:8.4</span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>          fi</span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>          for i in $(seq 1 60); do</span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>            if [ "$(docker inspect -f '{{.State.Health.Status}}' gallery-db)" = healthy ]; then echo "Database is up"; exit 0; fi</span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>            sleep 2</span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>          done</span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a>          docker logs gallery-db</span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a>          exit 1</span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Replace the running container</span></span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a>          set -a; . ~/gallery/db.env; set +a</span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a>          docker rm -f gallery || true</span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a>          docker run -d --name gallery --network gallery --restart unless-stopped \</span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a>            -p 80:8080 -e SPRING_PROFILES_ACTIVE=test -e APP_BUILD_INFO="$BUILD_INFO" \</span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a>            -e SPRING_DATASOURCE_URL="jdbc:mysql://gallery-db:3306/$MYSQL_DATABASE" \</span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>            -e SPRING_DATASOURCE_USERNAME="$MYSQL_USER" \</span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a>            -e SPRING_DATASOURCE_PASSWORD="$MYSQL_PASSWORD" \</span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a>            gallery:test</span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Wait for the app to answer</span></span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>          for i in $(seq 1 60); do</span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a>            if curl -fs http://localhost/MainGallery/Login &gt; /dev/null; then echo "App is up"; exit 0; fi</span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a>            sleep 2</span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a>          done</span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a>          docker logs gallery</span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a>          exit 1</span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Show the site address</span></span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a>          # Ask AWS for this instance's public IP. It changes each time the lab restarts.</span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a>          TOKEN=$(curl -fsS --max-time 5 -X PUT http://169.254.169.254/latest/api/token \</span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a>            -H "X-aws-ec2-metadata-token-ttl-seconds: 60" || true)</span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a>          IP=$(curl -fsS --max-time 5 -H "X-aws-ec2-metadata-token: $TOKEN" \</span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a>            http://169.254.169.254/latest/meta-data/public-ipv4 || true)</span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a>          SITE=${IP:+http://$IP/MainGallery/HomePage}</span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a>          {</span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a>            echo "### Test site deployed"</span>
+<span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a>            echo "- Site: ${SITE:-no public IP found}"</span>
+<span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a>            echo "- Footer: $BUILD_INFO"</span>
+<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a>            echo "- Database: $(grep '^MYSQL_DATABASE=' ~/gallery/db.env | cut -d= -f2), user $(grep '^MYSQL_USER=' ~/gallery/db.env | cut -d= -f2)"</span>
+<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a>          } &gt;&gt; "$GITHUB_STEP_SUMMARY"</span>
+<span id="cb12-107"><a href="#cb12-107" aria-hidden="true" tabindex="-1"></a>          echo "Site: ${SITE:-no public IP found}"</span>
+<span id="cb12-108"><a href="#cb12-108" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Remove old images</span></span>
+<span id="cb12-109"><a href="#cb12-109" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> docker image prune -f</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>What it does, step by step:</p>
 <ul>
 <li><code>runs-on: [self-hosted, test]</code> picks the runner with both labels: your test server.</li>
 <li><strong>Find the pull request</strong> asks the GitHub API which merged pull request produced this commit on <code>develop</code>, and saves a label such as <code>PR #9: Add team cards</code>. If someone pushed to <code>develop</code> directly, the label is <code>develop at</code> plus the commit’s short ID. <code>permissions: pull-requests: read</code> lets the workflow’s token make that call.</li>
-<li><code>chmod +x mvnw</code> makes the Maven wrapper executable, in case it was committed from Windows without that permission.</li>
-<li><code>docker build</code> builds the app inside Docker from the repo’s <code>Dockerfile</code>: compile with the JDK, then copy the jar onto a smaller Java runtime image.</li>
-<li><code>docker run</code> starts the app with the <code>test</code> profile and maps port 80 on the server to the app’s port 8080. <code>-e APP_BUILD_INFO</code> passes the label to the app, which shows it in the footer of every page. <code>--restart unless-stopped</code> starts the app again whenever the instance restarts.</li>
-<li>The wait step checks <code>/login</code>, which is public, and prints the app’s log if it never answers.</li>
+<li><strong>Build the image</strong> builds the app inside Docker from the repo’s <code>Dockerfile</code>: compile with the JDK, then copy the jar onto a smaller Java runtime image. <code>chmod +x mvnw</code> makes the Maven wrapper executable, in case it was committed from Windows without that permission.</li>
+<li><strong>Write db.env from the repository secrets</strong> runs only when <code>~/gallery/db.env</code> does not exist yet. It writes the database name (<code>idm3project2024</code>), the user (<code>gallery</code>) and the two passwords from the repo’s secrets into that file, readable only by <code>ubuntu</code>. If the file is already there, it is kept: MySQL sets its passwords only when it first creates the database, so replacing them later would lock the app out. If the file does not match the secret, the run shows a warning.</li>
+<li><strong>Start the database</strong> creates a private Docker network called <code>gallery</code>. The first time, it starts a MySQL container called <code>gallery-db</code> on that network, using the names and passwords in <code>~/gallery/db.env</code>, and loads <code>idm3project2024.sql</code> into it. The data lives in a Docker volume, <code>gallery-dbdata</code>. On every later deploy the database is already running, so the step leaves it alone and your test data survives.</li>
+<li><strong>Replace the running container</strong> starts the app on the same network and maps port 80 on the server to the app’s port 8080. It overrides the database settings in <code>application.properties</code>, which point at <code>localhost</code>: inside a container, <code>localhost</code> is the container itself. Instead the app gets <code>gallery-db</code>, the database container’s name on the network, plus the user and password from <code>db.env</code>. <code>-e APP_BUILD_INFO</code> passes the footer label, and <code>--restart unless-stopped</code> starts the app again whenever the instance restarts.</li>
+<li><strong>Wait for the app to answer</strong> checks the login page, which is public, for up to two minutes, and prints the app’s log if it never answers.</li>
+<li><strong>Show the site address</strong> asks AWS for the server’s public IP and adds a summary to the run: a link to the site, the footer label, and the database name and user. Passwords are never shown.</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>How this matches your laptop
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Locally, <code>docker compose up</code> does the same job: <code>docker-compose.yml</code> starts a <code>db</code> service and sets <code>SPRING_DATASOURCE_URL</code> to <code>jdbc:mysql://db:3306/idm3project2024</code>. On the server, the workflow does it with <code>docker run</code> commands, and the database is called <code>gallery-db</code>.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -548,25 +696,21 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The skeleton’s <code>application.yml</code> has <code>app.build-info: ${APP_BUILD_INFO:local dev}</code>, so the label comes from the <code>APP_BUILD_INFO</code> environment variable and is <code>local dev</code> on your laptop. <code>BuildInfoAdvice.java</code> adds it to every page, and <code>templates/fragments/footer.html</code> displays it. Pages show it by including the footer fragment:</p>
+<p><code>application.properties</code> has <code>app.build-info=${APP_BUILD_INFO:local dev}</code>, so the label comes from the <code>APP_BUILD_INFO</code> environment variable and is <code>local dev</code> on your laptop. <code>BuildInfoAdvice.java</code> adds it to every page, and <code>templates/fragments/footer.html</code> displays it. Pages show it by including the footer fragment:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">footer</span><span class="ot"> th:replace</span><span class="op">=</span><span class="st">"~{fragments/footer :: footer}"</span><span class="dt">&gt;&lt;/</span><span class="kw">footer</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Add that line to every new page you create, just before <code>&lt;/body&gt;</code>.</p>
 </div>
 </div>
-<p><strong>Save both files</strong>, then stage them and check what you are about to commit:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .github/workflows</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--cached</span> <span class="at">--stat</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Both files must show lines added, about 25 for <code>ci.yml</code> and 45 for <code>deploy-test.yml</code>. A file that shows <code>0</code> was not saved: an empty workflow file fails on every push. Then commit, push and open a pull request into <code>develop</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add CI and test deployment workflows"</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin feature/add-test-pipeline</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>ci</code> check runs on the pull request. When it is green, a teammate approves and merges it. The merge into <code>develop</code> starts the first <code>deploy-test</code> run.</p>
 </section>
 <section id="check-the-first-deployment" class="level2">
 <h2 class="anchored" data-anchor-id="check-the-first-deployment">2.9 Check the first deployment</h2>
 <ol type="1">
-<li>On GitHub, open the <strong>Actions</strong> tab and click the <code>deploy-test</code> run. The first build takes several minutes while Maven downloads its dependencies. The <strong>Find the pull request</strong> step prints the label it found.</li>
-<li>When it is green, open <code>http://&lt;public-ip&gt;/</code> in your browser. The footer shows your pull request’s number and title, e.g.&nbsp;<code>PR #5: Add CI and test deployment workflows</code>.</li>
+<li>If no <strong>deploy-test</strong> run is waiting, start one: in <code>gallery-practice</code>, open <strong>Actions → deploy-test → Run workflow</strong> and choose <code>develop</code>.</li>
+<li>Click the run. The first build takes several minutes while Maven downloads its dependencies. <strong>Write db.env from the repository secrets</strong> prints <code>Created ~/gallery/db.env</code>, and <strong>Start the database</strong> ends with <code>Database is up</code>.</li>
+<li>When it is green, the run’s summary page shows <strong>Test site deployed</strong> with a link to the site. Click it.</li>
+<li>Check the home page lists the sample projects and showcases, and that a test login from step 1.5 works.</li>
 </ol>
+<p>The footer shows <code>develop at</code> and the commit’s short ID, because your practice repo has no pull requests of its own yet. To see a pull request in the footer, make a small change on a branch of <code>gallery-practice</code>, open a pull request into <code>develop</code> there, and merge it.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -577,15 +721,15 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The Gallery home page loads from <code>http://&lt;test-ip&gt;/</code>, with your pull request in the footer. Post the test server’s address on your team’s board: from now on, every merge into <code>develop</code> appears there a few minutes later.</p>
+<p>Your practice site loads from the link in the run’s summary, with the sample data showing. Stop the instance when you have finished, to save your lab budget.</p>
 </div>
 </div>
 </section>
 <section id="between-lab-sessions" class="level2">
 <h2 class="anchored" data-anchor-id="between-lab-sessions">Between lab sessions</h2>
 <ul>
-<li>When the lab ends, the instance may be stopped. When you start the lab again, start the instance if it is not already running. The runner service and the app container start by themselves.</li>
-<li>The <strong>public IP changes</strong> each time the instance starts. Check the new address in the console and update it on your board.</li>
+<li>When the lab ends, the instance may be stopped. When you start the lab again, start the instance if it is not already running. The runner service, the database and the app start by themselves. The app may restart once while MySQL is still starting; that is expected.</li>
+<li>The <strong>public IP changes</strong> each time the instance starts. The next deployment’s summary shows the new address; to get it without a merge, open <strong>Actions → deploy-test → Run workflow</strong>. You can also find it in the EC2 console. Update it on your board.</li>
 <li>While the instance is stopped, deploy jobs wait in the queue as <em>Queued</em>. They run once the instance is back, or fail after 24 hours.</li>
 </ul>
 
@@ -1000,8 +1144,8 @@ Warning
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="pagination-link" aria-label="3. Create the prod server on AWS">
-        <span class="nav-page-text">3. Create the prod server on AWS</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="pagination-link" aria-label="3. Optional: create a prod server on AWS">
+        <span class="nav-page-text">3. Optional: create a prod server on AWS</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

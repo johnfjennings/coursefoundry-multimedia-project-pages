@@ -205,13 +205,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/02-test-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Create the test server on AWS</span></a>
+ <span class="menu-text">2. Optional: create a test server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Create the prod server on AWS</span></a>
+ <span class="menu-text">3. Optional: create a prod server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -253,6 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#follow-the-deployment" id="toc-follow-the-deployment" class="nav-link active" data-scroll-target="#follow-the-deployment">5.1 Follow the deployment</a></li>
   <li><a href="#check-it-in-the-browser" id="toc-check-it-in-the-browser" class="nav-link" data-scroll-target="#check-it-in-the-browser">5.2 Check it in the browser</a></li>
   <li><a href="#optional-look-at-the-server" id="toc-optional-look-at-the-server" class="nav-link" data-scroll-target="#optional-look-at-the-server">5.3 Optional: look at the server</a></li>
+  <li><a href="#reset-the-test-database" id="toc-reset-the-test-database" class="nav-link" data-scroll-target="#reset-the-test-database">5.4 Reset the test database</a></li>
   <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
   </ul>
 </nav>
@@ -290,31 +291,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="follow-the-deployment">5.1 Follow the deployment</h2>
 <ol type="1">
 <li>On GitHub, open <strong>Actions → deploy-test</strong>. The newest run is named after your merge commit.</li>
-<li>Click into it. Each step shows a tick as it finishes; <strong>Find the pull request</strong> prints the footer label, and <strong>Wait for the app to answer</strong> ends with <code>App is up</code>.</li>
+<li>Click into it. Each step shows a tick as it finishes:
+<ul>
+<li><strong>Find the pull request</strong> prints the footer label.</li>
+<li><strong>Start the database</strong> ends with <code>Database is up</code>.</li>
+<li><strong>Wait for the app to answer</strong> ends with <code>App is up</code>.</li>
+<li><strong>Show the site address</strong> prints the site’s link, which also appears on the run’s summary page.</li>
+</ul></li>
 </ol>
 <p>A run usually takes two to five minutes. If it stays <strong>Queued</strong> with <em>Waiting for a runner</em>, the test server is not available: see the table below.</p>
 </section>
 <section id="check-it-in-the-browser" class="level2">
 <h2 class="anchored" data-anchor-id="check-it-in-the-browser">5.2 Check it in the browser</h2>
-<p>Open <code>http://&lt;test-ip&gt;/</code> and run through this checklist:</p>
+<p>The run’s summary page shows, below the job graph, <strong>Test site deployed</strong> with a <strong>Site</strong> link. Click it. Always take the link from the newest run: the server’s address changes whenever it restarts (see <a href="../../modules/02-build-and-deploy/00-overview.html#finding-your-teams-sites">Finding your team’s sites</a>). Then run through this checklist:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">The footer shows <strong>your</strong> pull request’s number and title, e.g.&nbsp;<code>PR #7: Add Aoife to team page</code></label></li>
-<li><label><input type="checkbox">The home page loads</label></li>
-<li><label><input type="checkbox"><code>/team</code> shows <strong>your</strong> card, and everyone else’s merged so far</label></li>
-<li><label><input type="checkbox"><strong>Login</strong> with <code>student1</code> / <code>Password123!</code> reaches the dashboard</label></li>
-<li><label><input type="checkbox">Logging out returns you to the home page</label></li>
+<li><label><input type="checkbox">The footer shows <strong>your</strong> pull request’s number and title, e.g.&nbsp;<code>PR #7: Add Aoife to the footer</code></label></li>
+<li><label><input type="checkbox">The home page loads, with the sample projects and showcases</label></li>
+<li><label><input type="checkbox">Your change works as it did on your laptop. For your first pull request (step 4), your name is in the footer’s team list, below everyone merged before you</label></li>
+<li><label><input type="checkbox">A test login from step 1.5 works</label></li>
 </ul>
 <p>The footer tells you at a glance which pull request the test server is running. If it shows an earlier pull request, the deployment for yours has not finished, or failed: check <strong>Actions</strong>. Refresh with <strong>Ctrl+F5</strong> if the page looks out of date.</p>
 </section>
 <section id="optional-look-at-the-server" class="level2">
 <h2 class="anchored" data-anchor-id="optional-look-at-the-server">5.3 Optional: look at the server</h2>
-<p>Connect to the test server (step 2.4) and run:</p>
+<p>Only for a server you built yourself in the optional step 2; your team’s server is run by your lecturer. Connect to it (step 2.4) and run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> logs <span class="at">--tail</span> 30 gallery</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>docker ps</code> shows the <code>gallery</code> container, <code>Up</code> for a few minutes, on <code>0.0.0.0:80-&gt;8080/tcp</code>. The log ends with Spring Boot’s <code>Started GalleryApplication</code>.</p>
+<p><code>docker ps</code> shows two containers:</p>
+<ul>
+<li><code>gallery</code>, the app, on <code>0.0.0.0:80-&gt;8080/tcp</code></li>
+<li><code>gallery-db</code>, MySQL, marked <code>(healthy)</code> and with no published port</li>
+</ul>
+<p>The app’s log ends with Spring Boot’s <code>Started GalleryApplication</code>.</p>
+<p>To look inside the test database:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> exec <span class="at">-it</span> gallery-db sh <span class="at">-c</span> <span class="st">'mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Try <code>SHOW TABLES;</code>, then <code>exit</code>.</p>
+</section>
+<section id="reset-the-test-database" class="level2">
+<h2 class="anchored" data-anchor-id="reset-the-test-database">5.4 Reset the test database</h2>
+<p>The test database keeps whatever data your team adds. To start again from <code>idm3project2024.sql</code>, for example after the team changes that file, ask your lecturer to reset your team’s test database. On a practice server of your own, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> gallery-db</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> volume rm gallery-dbdata</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then open <strong>Actions → deploy-test → Run workflow</strong> and choose <code>develop</code>. The next deploy creates the database again from the seed file.</p>
 </section>
 <section id="troubleshooting" class="level2">
 <h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
+<p>Rows marked <strong>Server</strong> need a fix on the server itself. On your team’s servers, only your lecturer can make it: send them the link to the failed run. On a practice server of your own (step 2), fix it yourself. Everything else you fix in your code, through a pull request.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -329,11 +351,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>Run stays <strong>Queued</strong>, <em>Waiting for a runner</em></td>
-<td>The lab is not running, or the instance is stopped. Start the lab, then start <code>gallery-test</code></td>
+<td><strong>Server.</strong> The server is stopped. Tell your lecturer. On a practice server, start the lab, then start <code>gallery-test</code></td>
+</tr>
+<tr class="even">
+<td>The site link does not answer</td>
+<td>The server has restarted and has a new address. <strong>Actions → deploy-test → Run workflow</strong> on <code>develop</code> posts a fresh link. If it still does not answer: <strong>Server</strong>, check <code>gallery-web</code> still allows HTTP</td>
+</tr>
+<tr class="odd">
+<td>The summary says <code>no public IP found</code></td>
+<td><strong>Server.</strong> The instance has no public IPv4 address (step 2.3)</td>
 </tr>
 <tr class="even">
 <td><code>permission denied … docker.sock</code></td>
-<td>The runner service started before <code>ubuntu</code> joined the <code>docker</code> group. On the server: <code>cd ~/actions-runner &amp;&amp; sudo ./svc.sh stop &amp;&amp; sudo ./svc.sh start</code>, then <strong>Re-run jobs</strong></td>
+<td><strong>Server.</strong> The runner service started before <code>ubuntu</code> joined the <code>docker</code> group. On the server: <code>cd ~/actions-runner &amp;&amp; sudo ./svc.sh stop &amp;&amp; sudo ./svc.sh start</code>, then <strong>Re-run jobs</strong></td>
+</tr>
+<tr class="odd">
+<td><code>Add the TEST_DB_PASSWORD and TEST_DB_ROOT_PASSWORD repository secrets</code></td>
+<td>The repo’s secrets are not set. In your team repo, tell your lecturer. In a practice repo, add them yourself (step 2.0), then <strong>Re-run jobs</strong></td>
+</tr>
+<tr class="even">
+<td><code>The database passwords must be letters and digits only</code></td>
+<td>A secret contains a symbol or space. Set it again with letters and digits only (your lecturer, in a team repo)</td>
+</tr>
+<tr class="odd">
+<td>Warning: <code>db.env on the server does not match the TEST_DB_PASSWORD secret</code></td>
+<td><strong>Server.</strong> The server’s file was made earlier, by hand or from older secrets. The deployment uses it and still works. To switch to the secrets: <code>rm ~/gallery/db.env</code> on the server, then reset the database (5.4)</td>
+</tr>
+<tr class="even">
+<td>App log shows <code>HHH000342: Could not obtain connection</code> and a <code>NullPointerException</code> in <code>JdbcIsolationDelegate</code></td>
+<td>The app cannot reach MySQL. Hibernate hides the real error behind this exception. <strong>Server:</strong> <code>docker logs gallery 2&gt;&amp;1 \| grep -m3 "Caused by"</code> shows it. Check <code>gallery-db</code> is running (<code>docker ps</code>), and that the app’s <code>docker run</code> has <code>--network gallery</code> and the three <code>SPRING_DATASOURCE_</code> settings</td>
+</tr>
+<tr class="odd">
+<td><code>Access denied for user 'gallery'</code> in the app log</td>
+<td><strong>Server.</strong> <code>db.env</code> was changed after the database was created, and MySQL still has the old passwords. Reset the database (5.4)</td>
+</tr>
+<tr class="even">
+<td><strong>Start the database</strong> times out</td>
+<td>MySQL did not start. The step prints <code>docker logs gallery-db</code>: an error in <code>idm3project2024.sql</code> is yours to fix; a full disk (<code>df -h</code>) is a <strong>Server</strong> problem</td>
 </tr>
 <tr class="odd">
 <td><code>./mvnw: Permission denied</code> in the build</td>
@@ -348,28 +402,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>The app did not start. The step prints <code>docker logs gallery</code>: read the first <code>ERROR</code> or <code>Caused by</code></td>
 </tr>
 <tr class="even">
-<td>The browser times out</td>
-<td>The public IP has changed (check the console), or <code>gallery-web</code> has lost its HTTP rule</td>
-</tr>
-<tr class="odd">
 <td>The footer shows <code>develop at …</code> instead of a pull request</td>
 <td>The commit was pushed straight to <code>develop</code>, not merged through a pull request; or the workflow has no <code>pull-requests: read</code> permission</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>The footer shows <code>local dev</code> on the server</td>
 <td>The <code>docker run</code> line is missing <code>-e APP_BUILD_INFO="$BUILD_INFO"</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>A page has no footer at all</td>
 <td>That page does not include the footer fragment. Add <code>&lt;footer th:replace="~{fragments/footer :: footer}"&gt;&lt;/footer&gt;</code> before <code>&lt;/body&gt;</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>A run named after the file, e.g.&nbsp;<code>.github/workflows/ci.yml</code>, fails in 0 seconds on every push</td>
 <td>The workflow file is empty or not valid YAML, so GitHub cannot read it. Check the file on GitHub; if it is empty, it was committed before being saved. Fix it in a new pull request</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>ci</code> fails with <code>wget: Failed to fetch …apache-maven-…-bin.zip</code></td>
 <td>Maven Central refused the download. Click <strong>Re-run jobs → Re-run failed jobs</strong>. If your <code>ci.yml</code> has no <strong>Download Maven</strong> step, add it (step 2.8)</td>
+</tr>
+<tr class="odd">
+<td><code>docker compose up --build</code> on your laptop fails at <code>./mvnw</code> with exit code 127</td>
+<td><code>mvnw</code> was checked out with Windows line endings. Your repo needs a <code>.gitattributes</code> file with the line <code>/mvnw text eol=lf</code>. Then run <code>rm mvnw</code> and <code>git checkout -- mvnw</code></td>
 </tr>
 </tbody>
 </table>
@@ -384,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The test server shows every team member’s card, the footer shows the last merged pull request, and the last <code>deploy-test</code> run is green. <code>develop</code> is now ready to release.</p>
+<p>The test server shows every merged change, with data from its database, the footer shows the last merged pull request and every team member’s name, and the last <code>deploy-test</code> run is green. <code>develop</code> is now ready to release.</p>
 </div>
 </div>
 

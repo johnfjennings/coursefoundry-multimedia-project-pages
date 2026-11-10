@@ -8,7 +8,7 @@
 
 <meta name="author" content="Mr.&nbsp;John Jennings">
 
-<title>3. Create the prod server on AWS – IDM3 - Multimedia Project</title>
+<title>3. Optional: create a prod server on AWS – IDM3 - Multimedia Project</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="3. Create the prod server on AWS – IDM3 - Multimedia Project">
+<meta property="og:title" content="3. Optional: create a prod server on AWS – IDM3 - Multimedia Project">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="IDM3 - Multimedia Project">
 </head>
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/00-overview.html">Build And Deploy</a></li><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/03-prod-server.html">3. Create the prod server on AWS</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/00-overview.html">Build And Deploy</a></li><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/03-prod-server.html">3. Optional: create a prod server on AWS</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -205,13 +205,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/02-test-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Create the test server on AWS</span></a>
+ <span class="menu-text">2. Optional: create a test server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">3. Create the prod server on AWS</span></a>
+ <span class="menu-text">3. Optional: create a prod server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -253,15 +253,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#build-the-server" id="toc-build-the-server" class="nav-link active" data-scroll-target="#build-the-server">3.1 Build the server</a></li>
   <li><a href="#install-the-runner" id="toc-install-the-runner" class="nav-link" data-scroll-target="#install-the-runner">3.2 Install the runner</a></li>
   <li><a href="#add-the-prod-workflow" id="toc-add-the-prod-workflow" class="nav-link" data-scroll-target="#add-the-prod-workflow">3.3 Add the prod workflow</a></li>
+  <li><a href="#try-a-release" id="toc-try-a-release" class="nav-link" data-scroll-target="#try-a-release">3.4 Try a release</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/00-overview.html">Build And Deploy</a></li><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/03-prod-server.html">3. Create the prod server on AWS</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/00-overview.html">Build And Deploy</a></li><li class="breadcrumb-item"><a href="../../modules/02-build-and-deploy/03-prod-server.html">3. Optional: create a prod server on AWS</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">3. Create the prod server on AWS</h1>
+<h1 class="title">3. Optional: create a prod server on AWS</h1>
 </div>
 
 
@@ -284,8 +285,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Who:</strong> a different driver from step 2, in their own AWS Academy lab. Spreading the servers across two accounts shares the cost between two budgets. <strong>Goal:</strong> a second EC2 instance, with a runner labelled <code>prod</code>, which deploys only <strong>release tags on <code>main</code></strong>.</p>
-<p>The prod server is built exactly like the test server. Only five things differ:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>This step is optional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your lecturer has already built your team’s prod server. Do this step after step 2 if you want to see the release side too, in the same practice repo.</p>
+</div>
+</div>
+<p><strong>Who:</strong> you, on your own, after step 2. <strong>Goal:</strong> a second EC2 instance, with its own MySQL and a runner labelled <code>prod</code>, which deploys only <strong>release tags on <code>main</code></strong> of your practice repo.</p>
+<p>The prod server is built exactly like the test server. Only six things differ:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -325,25 +339,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>PR #9: Add team cards</code></td>
 <td><code>Release v0.1.0</code></td>
 </tr>
+<tr class="even">
+<td>Database</td>
+<td>Its own, with test data. Passwords from <code>TEST_DB_</code> secrets</td>
+<td>Its own, separate from test. <strong>Different passwords</strong>, from <code>PROD_DB_</code> secrets</td>
+</tr>
 </tbody>
 </table>
 <section id="build-the-server" class="level2">
 <h2 class="anchored" data-anchor-id="build-the-server">3.1 Build the server</h2>
 <p>Follow step 2 from <strong>2.1 to 2.6</strong>, with these changes:</p>
 <ul>
-<li>Start the lab in <strong>your own</strong> account. Create the <code>gallery-web</code> security group there too (2.2), since security groups belong to one account.</li>
+<li>Use the same lab as step 2. The <code>gallery-web</code> security group is already there, so skip 2.2. Two <code>t3.medium</code> instances use your budget twice as fast: stop both when you have finished.</li>
 <li>Name the instance <code>gallery-prod</code> (2.3).</li>
+<li>Add two more secrets to <code>gallery-practice</code>, <code>PROD_DB_PASSWORD</code> and <code>PROD_DB_ROOT_PASSWORD</code>, different from the test ones. The first release writes them to <code>~/gallery/db.env</code> on this server.</li>
 </ul>
 <p>Check <code>docker run --rm hello-world</code> works before moving on.</p>
 </section>
 <section id="install-the-runner" class="level2">
 <h2 class="anchored" data-anchor-id="install-the-runner">3.2 Install the runner</h2>
-<p>Ask your lecturer for a <strong>new</strong> registration token; tokens expire after an hour. Then on the prod server:</p>
+<p>Get a <strong>new</strong> registration token from <code>gallery-practice</code>, as in 2.7; tokens expire after an hour. Then on the prod server:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/actions-runner <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> ~/actions-runner</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">RUNNER_VERSION</span><span class="op">=</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-s</span> https://api.github.com/repos/actions/runner/releases/latest <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-oP</span> <span class="st">'"tag_name": "v\K[^"]+'</span><span class="va">)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-sL</span> <span class="at">-o</span> runner.tar.gz https://github.com/actions/runner/releases/download/v<span class="va">${RUNNER_VERSION}</span>/actions-runner-linux-x64-<span class="va">${RUNNER_VERSION}</span>.tar.gz</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xzf runner.tar.gz</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./config.sh</span> <span class="at">--url</span> https://github.com/<span class="op">&lt;</span>lecturer<span class="op">&gt;</span>/<span class="op">&lt;</span>team-repo<span class="op">&gt;</span> --token <span class="op">&lt;</span>TOKEN<span class="op">&gt;</span> --name gallery-prod <span class="at">--labels</span> prod <span class="at">--unattended</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./config.sh</span> <span class="at">--url</span> https://github.com/<span class="op">&lt;</span>you<span class="op">&gt;</span>/gallery-practice <span class="at">--token</span> <span class="op">&lt;</span>TOKEN<span class="op">&gt;</span> --name gallery-prod <span class="at">--labels</span> prod <span class="at">--unattended</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./svc.sh install</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./svc.sh start</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./svc.sh status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -364,10 +384,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="add-the-prod-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="add-the-prod-workflow">3.3 Add the prod workflow</h2>
-<p>On your laptop, through a pull request into <code>develop</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch develop</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> feature/add-prod-pipeline</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If <code>gallery-practice</code> already has <code>.github/workflows/deploy-prod.yml</code>, read it and the explanations below, then go to 3.4. Otherwise add it through a pull request in your practice repo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/<span class="op">&lt;</span>you<span class="op">&gt;</span>/gallery-practice.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> gallery-practice</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch develop</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> feature/add-prod-pipeline</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Create <code>.github/workflows/deploy-prod.yml</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> deploy-prod</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
@@ -391,20 +412,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>          chmod +x mvnw</span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>          docker build -t gallery:${GITHUB_REF_NAME} .</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Replace the running container</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>          docker rm -f gallery || true</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>          docker run -d --name gallery --restart unless-stopped \</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>            -p 80:8080 -e SPRING_PROFILES_ACTIVE=prod \</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>            -e APP_BUILD_INFO="Release ${GITHUB_REF_NAME}" gallery:${GITHUB_REF_NAME}</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Wait for the app to answer</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>          for i in $(seq 1 30); do</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>            if curl -fs http://localhost/login &gt; /dev/null; then echo "Release ${GITHUB_REF_NAME} is up"; exit 0; fi</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            sleep 2</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>          done</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>          docker logs gallery</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>          exit 1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Write db.env from the repository secrets</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">DB_PASSWORD</span><span class="kw">:</span><span class="at"> ${{ secrets.PROD_DB_PASSWORD }}</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">DB_ROOT_PASSWORD</span><span class="kw">:</span><span class="at"> ${{ secrets.PROD_DB_ROOT_PASSWORD }}</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>          if [ -f ~/gallery/db.env ]; then</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>            # The database keeps the passwords it was first created with, so an existing file wins.</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>            if [ -n "$DB_PASSWORD" ] &amp;&amp; ! grep -qxF "MYSQL_PASSWORD=$DB_PASSWORD" ~/gallery/db.env; then</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>              echo "::warning::~/gallery/db.env on the server does not match the PROD_DB_PASSWORD secret. The server's file is used."</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>            fi</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            echo "Using the existing ~/gallery/db.env"</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>            exit 0</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>          fi</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>          if [ -z "$DB_PASSWORD" ] || [ -z "$DB_ROOT_PASSWORD" ]; then</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>            echo "::error::Add the PROD_DB_PASSWORD and PROD_DB_ROOT_PASSWORD repository secrets (course step 3.1)."</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>            exit 1</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>          fi</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>          case "$DB_PASSWORD$DB_ROOT_PASSWORD" in</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>            *[!A-Za-z0-9]*) echo "::error::The database passwords must be letters and digits only."; exit 1 ;;</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>          esac</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>          mkdir -p ~/gallery</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>          umask 077</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>          printf 'MYSQL_DATABASE=idm3project2024\nMYSQL_USER=gallery\nMYSQL_PASSWORD=%s\nMYSQL_ROOT_PASSWORD=%s\n' \</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>            "$DB_PASSWORD" "$DB_ROOT_PASSWORD" &gt; ~/gallery/db.env</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>          echo "Created ~/gallery/db.env"</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Start the database</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>          docker network create gallery 2&gt;/dev/null || true</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>          if [ -z "$(docker ps -q -f name=^gallery-db$)" ]; then</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>            mkdir -p ~/gallery/initdb</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>            cp idm3project2024.sql ~/gallery/initdb/01-idm3project.sql</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>            docker rm -f gallery-db 2&gt;/dev/null || true</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>            docker run -d --name gallery-db --network gallery --restart unless-stopped \</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>              --env-file ~/gallery/db.env \</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>              -v gallery-dbdata:/var/lib/mysql \</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>              -v ~/gallery/initdb:/docker-entrypoint-initdb.d:ro \</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>              --health-cmd "mysqladmin ping -h localhost" --health-interval 5s \</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>              mysql:8.4</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>          fi</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>          for i in $(seq 1 60); do</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>            if [ "$(docker inspect -f '{{.State.Health.Status}}' gallery-db)" = healthy ]; then echo "Database is up"; exit 0; fi</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>            sleep 2</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>          done</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>          docker logs gallery-db</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>          exit 1</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Replace the running container</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>          set -a; . ~/gallery/db.env; set +a</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>          docker rm -f gallery || true</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>          docker run -d --name gallery --network gallery --restart unless-stopped \</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>            -p 80:8080 -e SPRING_PROFILES_ACTIVE=prod \</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>            -e APP_BUILD_INFO="Release ${GITHUB_REF_NAME}" \</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>            -e SPRING_DATASOURCE_URL="jdbc:mysql://gallery-db:3306/$MYSQL_DATABASE" \</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>            -e SPRING_DATASOURCE_USERNAME="$MYSQL_USER" \</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>            -e SPRING_DATASOURCE_PASSWORD="$MYSQL_PASSWORD" \</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>            gallery:${GITHUB_REF_NAME}</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Wait for the app to answer</span></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>          for i in $(seq 1 60); do</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>            if curl -fs http://localhost/MainGallery/Login &gt; /dev/null; then echo "Release ${GITHUB_REF_NAME} is up"; exit 0; fi</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>            sleep 2</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>          done</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>          docker logs gallery</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>          exit 1</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Show the site address</span></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>          # Ask AWS for this instance's public IP. It changes each time the lab restarts.</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>          TOKEN=$(curl -fsS --max-time 5 -X PUT http://169.254.169.254/latest/api/token \</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>            -H "X-aws-ec2-metadata-token-ttl-seconds: 60" || true)</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>          IP=$(curl -fsS --max-time 5 -H "X-aws-ec2-metadata-token: $TOKEN" \</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>            http://169.254.169.254/latest/meta-data/public-ipv4 || true)</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>          SITE=${IP:+http://$IP/MainGallery/HomePage}</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>          {</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>            echo "### Release ${GITHUB_REF_NAME} deployed"</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>            echo "- Site: ${SITE:-no public IP found}"</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>            echo "- Database: $(grep '^MYSQL_DATABASE=' ~/gallery/db.env | cut -d= -f2), user $(grep '^MYSQL_USER=' ~/gallery/db.env | cut -d= -f2)"</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>          } &gt;&gt; "$GITHUB_STEP_SUMMARY"</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>          echo "Site: ${SITE:-no public IP found}"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>How it differs from <code>deploy-test.yml</code>:</p>
 <ul>
 <li><code>on: push: tags: ['v*']</code> runs it for tags such as <code>v0.1.0</code>, and never for branch pushes.</li>
@@ -412,9 +497,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Check the tag is on main</strong> stops the deployment if someone tags a commit that has not been through a release pull request.</li>
 <li>The image is named after the tag, e.g.&nbsp;<code>gallery:v0.1.0</code>. Older release images stay on the server, which makes rolling back possible (step 7).</li>
 <li><code>-e APP_BUILD_INFO="Release ${GITHUB_REF_NAME}"</code> puts the tag in the footer, e.g.&nbsp;<code>Release v0.1.0</code>. GitHub sets <code>GITHUB_REF_NAME</code> to the tag’s name, so no lookup is needed.</li>
+<li><strong>Write db.env from the repository secrets</strong> reads the <code>PROD_DB_</code> secrets instead of the <code>TEST_DB_</code> ones.</li>
+<li><strong>Show the site address</strong> heads the run’s summary with the release, e.g.&nbsp;<strong>Release v0.1.0 deployed</strong>, and links to the prod site.</li>
 </ul>
-<p>Commit, push and open a pull request into <code>develop</code>. When <code>ci</code> is green, a teammate approves and merges it.</p>
+<p><strong>Start the database</strong> is identical to the test workflow’s: the first release creates prod’s database from <code>idm3project2024.sql</code>, and every later release keeps its data. Prod’s data is never copied from test.</p>
+<p>Commit, push and open a pull request into <code>develop</code> in <code>gallery-practice</code>. When <code>ci</code> is green, merge it yourself.</p>
 <p>Merging it into <code>develop</code> does <strong>not</strong> deploy anything to prod: there is no tag yet, and the file only reaches <code>main</code> at your first release (step 6).</p>
+</section>
+<section id="try-a-release" class="level2">
+<h2 class="anchored" data-anchor-id="try-a-release">3.4 Try a release</h2>
+<p>Follow step 6 in <code>gallery-practice</code>: a pull request from <code>develop</code> into <code>main</code>, merged with a merge commit, then a release tagged <code>v0.1.0</code> on <code>main</code>. The tag starts <strong>deploy-prod</strong> on your prod server. When it is green, its summary shows <strong>Release v0.1.0 deployed</strong> with a link to your practice prod site.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -425,7 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Two servers, each with a runner listening: <code>gallery-test</code> (label <code>test</code>) and <code>gallery-prod</code> (label <code>prod</code>). <code>http://&lt;prod-ip&gt;/</code> does not answer yet, which is expected until step 7.</p>
+<p>Two practice servers, each with a runner listening: <code>gallery-test</code> (label <code>test</code>) and <code>gallery-prod</code> (label <code>prod</code>). Your practice prod site shows <code>Release v0.1.0</code> in its footer. Stop both instances when you have finished.</p>
 </div>
 </div>
 
@@ -835,8 +927,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../modules/02-build-and-deploy/02-test-server.html" class="pagination-link" aria-label="2. Create the test server on AWS">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2. Create the test server on AWS</span>
+      <a href="../../modules/02-build-and-deploy/02-test-server.html" class="pagination-link" aria-label="2. Optional: create a test server on AWS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2. Optional: create a test server on AWS</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

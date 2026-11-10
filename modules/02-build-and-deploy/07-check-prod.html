@@ -208,13 +208,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/02-test-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Create the test server on AWS</span></a>
+ <span class="menu-text">2. Optional: create a test server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Create the prod server on AWS</span></a>
+ <span class="menu-text">3. Optional: create a prod server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -295,38 +295,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Open <strong>Actions → deploy-prod</strong>. The newest run is named after your tag, e.g.&nbsp;<code>v0.1.0</code>. Check that:</p>
 <ul class="task-list">
 <li><label><input type="checkbox"><strong>Check the tag is on main</strong> passed</label></li>
+<li><label><input type="checkbox"><strong>Start the database</strong> ends with <code>Database is up</code></label></li>
 <li><label><input type="checkbox"><strong>Wait for the app to answer</strong> ends with <code>Release v0.1.0 is up</code></label></li>
+<li><label><input type="checkbox">The run’s summary shows <strong>Release v0.1.0 deployed</strong>, with a link to the prod site</label></li>
 </ul>
-<p>If the run stays <strong>Queued</strong> with <em>Waiting for a runner</em>, start the lab in the account that holds <code>gallery-prod</code>, and start the instance if it is stopped.</p>
+<p>If the run stays <strong>Queued</strong> with <em>Waiting for a runner</em>, the prod server is stopped: tell your lecturer.</p>
 </section>
 <section id="check-it-in-the-browser" class="level2">
 <h2 class="anchored" data-anchor-id="check-it-in-the-browser">7.2 Check it in the browser</h2>
-<p>Open <code>http://&lt;prod-ip&gt;/</code> and run the same checklist as on test (step 5.2):</p>
+<p>The run’s summary shows <strong>Release v0.1.0 deployed</strong> with a <strong>Site</strong> link. Click it, and run the same checklist as on test (step 5.2):</p>
 <ul class="task-list">
 <li><label><input type="checkbox">The footer shows the release, e.g.&nbsp;<code>Release v0.1.0</code></label></li>
 <li><label><input type="checkbox">The home page loads</label></li>
-<li><label><input type="checkbox"><code>/team</code> shows every team member’s card</label></li>
+<li><label><input type="checkbox">Pages that read from the database show data</label></li>
 <li><label><input type="checkbox">Login and logout work</label></li>
 </ul>
-<p>Prod and test should now show the same pages, because they run the same code. Only the footer differs: test names the last merged pull request, prod names the release. Prod also uses the <code>prod</code> Spring profile, and test uses <code>test</code>.</p>
+<p>Prod and test run the same code, so the pages work the same way. Three things differ:</p>
+<ul>
+<li><strong>Footer:</strong> test names the last merged pull request; prod names the release.</li>
+<li><strong>Data:</strong> each server has its own database, so data you added on test is not on prod.</li>
+<li><strong>Spring profile:</strong> prod uses <code>prod</code>; test uses <code>test</code>.</li>
+</ul>
 </section>
 <section id="confirm-which-release-is-running" class="level2">
 <h2 class="anchored" data-anchor-id="confirm-which-release-is-running">7.3 Confirm which release is running</h2>
-<p>The footer is the quickest check. To confirm on the server itself:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">--format</span> <span class="st">'{{.Image}}  {{.Status}}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>It prints <code>gallery:v0.1.0  Up … minutes</code>. Record the release, its date and the prod URL on your team’s board: this is your deployment record.</p>
+<p>The footer is the quickest check. On a server you can log in to, such as your own practice server from step 3, you can also confirm it there:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">--format</span> <span class="st">'{{.Names}}  {{.Image}}  {{.Status}}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It prints <code>gallery  gallery:v0.1.0  Up … minutes</code>, and <code>gallery-db  mysql:8.4  Up … (healthy)</code>. Record the release and its date on your team’s board: this is your deployment record. Do not record the address, because it changes; the newest <strong>deploy-prod</strong> summary always has the current one.</p>
 </section>
 <section id="roll-back-a-bad-release" class="level2">
 <h2 class="anchored" data-anchor-id="roll-back-a-bad-release">7.4 Roll back a bad release</h2>
-<p>If a release breaks prod, put the previous one back first and fix the problem afterwards.</p>
+<p>If a release breaks prod, put the previous one back first and fix the problem afterwards. Rolling back changes the app only; the database and its data stay as they are.</p>
 <p><strong>From GitHub:</strong> open <strong>Actions → deploy-prod</strong>, click the run for the previous tag (e.g.&nbsp;<code>v0.1.0</code>) and choose <strong>Re-run all jobs</strong>. It builds and deploys that tag again, and the footer changes back to that release.</p>
-<p><strong>On the server, faster:</strong> the previous image is still there, so start it directly:</p>
+<p><strong>On the server, faster:</strong> your lecturer, or you on your own practice server, can start the previous image directly, since it is still there:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images gallery</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> gallery</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--name</span> gallery <span class="at">--restart</span> unless-stopped <span class="dt">\</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 80:8080 <span class="at">-e</span> SPRING_PROFILES_ACTIVE=prod <span class="dt">\</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-e</span> APP_BUILD_INFO=<span class="st">"Release v0.1.0"</span> gallery:v0.1.0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-a</span><span class="kw">;</span> <span class="bu">.</span> ~/gallery/db.env<span class="kw">;</span> <span class="bu">set</span> +a</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="at">-f</span> gallery</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--name</span> gallery <span class="at">--network</span> gallery <span class="at">--restart</span> unless-stopped <span class="dt">\</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-p</span> 80:8080 <span class="at">-e</span> SPRING_PROFILES_ACTIVE=prod <span class="dt">\</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-e</span> APP_BUILD_INFO=<span class="st">"Release v0.1.0"</span> <span class="dt">\</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">-e</span> SPRING_DATASOURCE_URL=<span class="st">"jdbc:mysql://gallery-db:3306/</span><span class="va">$MYSQL_DATABASE</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">-e</span> SPRING_DATASOURCE_USERNAME=<span class="st">"</span><span class="va">$MYSQL_USER</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-e</span> SPRING_DATASOURCE_PASSWORD=<span class="st">"</span><span class="va">$MYSQL_PASSWORD</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  gallery:v0.1.0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Then fix the problem on a feature branch, check it on test, and release a new version, e.g.&nbsp;<code>v0.2.1</code> (steps 4 to 6).</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Never reset the prod database
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Step 5.4’s reset deletes all data. That is fine on test, but on prod it destroys real data. If prod’s data needs to change, make the change through the app, or ask your lecturer first.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -337,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The skeleton’s <code>student1</code> and other in-memory accounts are a week 1 convenience. Before <code>v1.0.0</code> in week 11, login must use real accounts stored in the database, and the seed accounts must be gone from prod.</p>
+<p>Any in-memory or seed accounts in the skeleton are a week 1 convenience. Before <code>v1.0.0</code> in week 11, login must use real accounts stored in the database, and test accounts must be gone from prod.</p>
 </div>
 </div>
 </section>
@@ -368,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>http://&lt;prod-ip&gt;/</code> serves release <code>v0.1.0</code>, with the release in its footer, the team knows both server addresses, and everyone can explain how a change reaches prod.</p>
+<p>The prod site, linked from the newest <strong>deploy-prod</strong> summary, serves release <code>v0.1.0</code> with data from its own database and the release in its footer. Everyone can find both sites from the run summaries, and can explain how a change reaches prod.</p>
 </div>
 </div>
 

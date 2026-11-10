@@ -209,13 +209,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/02-test-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. Create the test server on AWS</span></a>
+ <span class="menu-text">2. Optional: create a test server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Create the prod server on AWS</span></a>
+ <span class="menu-text">3. Optional: create a prod server on AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -294,8 +294,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Who:</strong> every team member, <strong>one at a time</strong>. <strong>Goal:</strong> each of you adds your card to the team page through your own branch and pull request, reviewed and merged by a teammate.</p>
-<p>The first change everyone makes edits the same place in the same file (<code>team.html</code>), so take turns: the next person starts only after the previous pull request is merged. Later, when you work on different files, you can work in parallel.</p>
+<p><strong>Who:</strong> every team member, <strong>one at a time</strong>. <strong>Goal:</strong> each of you adds your name to the site’s footer through your own branch and pull request, reviewed and merged by a teammate.</p>
+<p>The footer is a good first change: it is one small file, it appears on every page, and you will see your name on the test server a few minutes after your pull request is merged. Everyone edits the same few lines of that file, so take turns: the next person starts only after the previous pull request is merged. Later, when you work on different files, you can work in parallel.</p>
 <section id="the-cycle" class="level2">
 <h2 class="anchored" data-anchor-id="the-cycle">The cycle</h2>
 <div class="cell" data-layout-align="default">
@@ -314,69 +314,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-an-issue" class="level2">
 <h2 class="anchored" data-anchor-id="create-an-issue">4.1 Create an issue</h2>
-<p>On your team’s project board, create an issue such as <em>Add Aoife to the team page</em> and assign it to yourself. Note its number, e.g.&nbsp;<code>#7</code>.</p>
+<p>On your team’s project board, create an issue such as <em>Add Aoife to the footer</em> and assign it to yourself. Note its number, e.g.&nbsp;<code>#7</code>.</p>
 </section>
 <section id="start-from-the-latest-develop" class="level2">
 <h2 class="anchored" data-anchor-id="start-from-the-latest-develop">4.2 Start from the latest develop</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch develop</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> feature/7-add-aoife-to-team-page</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> feature/7-add-aoife-to-footer</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Branch names follow <code>feature/&lt;issue-number&gt;-&lt;short-description&gt;</code>. In IntelliJ: <strong>Git → Pull</strong>, then click the branch name bottom right → <strong>New Branch</strong>.</p>
 </section>
 <section id="make-the-change" class="level2">
 <h2 class="anchored" data-anchor-id="make-the-change">4.3 Make the change</h2>
-<p>Open <code>src/main/resources/templates/team.html</code>. Between the <code>TEAM MEMBERS</code> comments, add your card <strong>below</strong> any that are already there:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"team-member"</span><span class="dt">&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>Aoife Byrne<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Employer vertical<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Check every <code>&lt;div&gt;</code> you open has its closing <code>&lt;/div&gt;</code>.</p>
-<p>Run the app (step 1.5) and check your card appears at <a href="http://localhost:8080/team" class="uri">http://localhost:8080/team</a>. Then run the build CI will run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./mvnw</span> verify</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Open <code>src/main/resources/templates/fragments/footer.html</code>. It is a Thymeleaf <strong>fragment</strong>: a piece of HTML that every page includes with <code>th:replace="~{fragments/footer :: footer}"</code>. Change it once, and every page changes.</p>
+<p>Inside the <code>&lt;footer&gt;</code>, look for the team list.</p>
+<p><strong>If there is no list yet, you are first.</strong> Add this block just after the <code>build-info</code> line, with your own name and the vertical you will own:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- TEAM: add your name as a new &lt;li&gt; at the end of this list --&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">ul</span><span class="ot"> class</span><span class="op">=</span><span class="st">"team-list"</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Aoife Byrne, Employer vertical<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>If the list is there,</strong> add one line for yourself at the end of it, below everyone else:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Ciarán Walsh, Student vertical<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Keep the indentation the same as the lines around it, and change nothing else in the file.</p>
+<p><strong>Run it.</strong> Start <code>db</code> if it is not running (step 1.4), run the app (step 1.5), and check that your name appears in the footer of both pages:</p>
+<ul>
+<li><a href="http://localhost:8080/MainGallery/HomePage" class="uri">http://localhost:8080/MainGallery/HomePage</a></li>
+<li><a href="http://localhost:8080/MainGallery/Login" class="uri">http://localhost:8080/MainGallery/Login</a></li>
+</ul>
+<p>Then, with <code>db</code> still running, run the build CI will run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./mvnw</span> verify</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="commit-and-push" class="level2">
 <h2 class="anchored" data-anchor-id="commit-and-push">4.4 Commit and push</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add src/main/resources/templates/team.html</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add Aoife to team page (#7)"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin feature/7-add-aoife-to-team-page</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>git status</code> should list only the files you meant to change. Never commit <code>.idea/</code>, <code>target/</code> or anything with a password in it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add src/main/resources/templates/fragments/footer.html</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add Aoife to the footer (#7)"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin feature/7-add-aoife-to-footer</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>git status</code> should list only <code>footer.html</code>. Never commit <code>.idea/</code>, <code>target/</code> or anything with a password in it.</p>
 </section>
 <section id="open-the-pull-request" class="level2">
 <h2 class="anchored" data-anchor-id="open-the-pull-request">4.5 Open the pull request</h2>
 <p>On GitHub, click <strong>Compare &amp; pull request</strong> on the yellow banner, or <strong>Pull requests → New pull request</strong>.</p>
 <ul>
 <li><strong>base:</strong> <code>develop</code> ← <strong>compare:</strong> your branch. Never <code>main</code>.</li>
-<li>Title: what the change does, e.g.&nbsp;<em>Add Aoife to team page</em>.</li>
-<li>Description: <code>Closes #7</code>, how to check it (<em>open /team</em>), and a screenshot.</li>
+<li>Title: what the change does, e.g.&nbsp;<em>Add Aoife to the footer</em>. This title appears in the test server’s footer once it is merged, so make it readable.</li>
+<li>Description: <code>Closes #7</code>, how to check it (<em>the footer on any page</em>), and a screenshot.</li>
 <li>Reviewers: one teammate.</li>
 </ul>
-<p>The <code>ci</code> check starts straight away. Wait for the green tick. If it goes red, click <strong>Details</strong>, read the log, fix it on the same branch and push again: the pull request updates itself.</p>
+<p>The <code>ci</code> check starts straight away. Wait for the green tick. A red cross does not stop the <strong>Merge</strong> button from working, so do not rely on GitHub to catch it. If it goes red, click <strong>Details</strong>, read the log, fix it on the same branch and push again: the pull request updates itself.</p>
 </section>
 <section id="review-a-teammates-pull-request" class="level2">
 <h2 class="anchored" data-anchor-id="review-a-teammates-pull-request">4.6 Review a teammate’s pull request</h2>
-<p>Reviewing means <strong>running</strong> the change, not just reading it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch origin</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch feature/7-add-aoife-to-team-page</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./mvnw</span> spring-boot:run</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Check the card at <code>localhost:8080/team</code>, then on GitHub open <strong>Files changed</strong>:</p>
+<p>Reviewing means <strong>running</strong> the change, not just reading it. With <code>db</code> running:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch origin</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch feature/7-add-aoife-to-footer</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./mvnw</span> spring-boot:run</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Check the footer on the home page and the login page, then on GitHub open <strong>Files changed</strong>:</p>
 <ul>
 <li>Does it do what the issue says, and nothing else?</li>
-<li>Is the HTML valid: closing tags, indentation matching the file?</li>
+<li>Is the HTML valid, with every <code>&lt;li&gt;</code> closed and the list still inside the <code>&lt;footer&gt;</code>?</li>
 <li>Are any unexpected files changed or deleted?</li>
 </ul>
-<p>If it is fine, choose <strong>Review changes → Approve</strong>. Otherwise choose <strong>Request changes</strong> with a comment saying exactly what to fix. Afterwards, switch back with <code>git switch develop</code>.</p>
+<p>If it is fine, choose <strong>Review changes → Approve</strong>. Otherwise choose <strong>Request changes</strong> with a comment saying exactly what to fix. Afterwards, stop the app and switch back with <code>git switch develop</code>.</p>
 </section>
 <section id="merge" class="level2">
 <h2 class="anchored" data-anchor-id="merge">4.7 Merge</h2>
 <p>When <code>ci</code> is green and the review is approved, the author clicks <strong>Squash and merge</strong>, then <strong>Delete branch</strong>. Squashing keeps <code>develop</code>’s history to one commit per feature.</p>
-<p>The merge into <code>develop</code> starts <code>deploy-test</code> on the test server. Step 5 checks it.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Team rules
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>GitHub does not enforce these in your team repo: the <strong>Merge</strong> button works whatever the checks say, and anyone can push straight to <code>develop</code> or <code>main</code>. Your team keeps them:</p>
+<ol type="1">
+<li>Merge only when <code>ci</code> shows a <strong>green tick</strong>.</li>
+<li>Merge only after a teammate has <strong>approved</strong> the pull request. Never approve or merge your own work without a review.</li>
+<li>Never push straight to <code>develop</code> or <code>main</code>. Every change goes through a pull request.</li>
+</ol>
+<p>Each pull request records its checks, its review and who merged it, so your lecturer can see whether the rules were kept.</p>
+</div>
+</div>
+<p>The merge into <code>develop</code> starts <code>deploy-test</code> on the test server. Step 5 checks it: the footer there will show your pull request’s title and your name.</p>
 </section>
 <section id="hand-over-to-the-next-person" class="level2">
 <h2 class="anchored" data-anchor-id="hand-over-to-the-next-person">4.8 Hand over to the next person</h2>
-<p>Tell the next teammate the pull request is merged. They start again at 4.2; <code>git pull</code> brings your change into their <code>develop</code>.</p>
+<p>Tell the next teammate the pull request is merged. They start again at 4.2; <code>git pull</code> brings your change into their <code>develop</code>, so they will find the list and add their line below yours.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -385,14 +413,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If two people edited the same lines, GitHub reports <em>This branch has conflicts</em>. On your branch:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch develop</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch feature/7-add-aoife-to-team-page</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge develop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Open the file, keep both cards, delete the <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> lines, then commit and push. The pull request updates and CI runs again.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch develop</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch feature/7-add-aoife-to-footer</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge develop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Open <code>footer.html</code>. Keep <strong>both</strong> names in the list, keep only one <code>&lt;ul class="team-list"&gt;</code> and one <code>&lt;/ul&gt;</code>, and delete the <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> lines. Run the app to check the footer, then commit and push. The pull request updates and CI runs again.</p>
 </div>
 </div>
 </div>
@@ -406,7 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Every member has one merged pull request, approved by a teammate, and the team page on <code>develop</code> shows every card.</p>
+<p>Every member has one merged pull request, approved by a teammate, and the footer on <code>develop</code> lists every member of the team.</p>
 </div>
 </div>
 
@@ -816,8 +844,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="pagination-link" aria-label="3. Create the prod server on AWS">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">3. Create the prod server on AWS</span>
+      <a href="../../modules/02-build-and-deploy/03-prod-server.html" class="pagination-link" aria-label="3. Optional: create a prod server on AWS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">3. Optional: create a prod server on AWS</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
